@@ -10,7 +10,7 @@ class UsuariosController < ApplicationController
 
   #POST /usuarios
   def create
-    @usuarios = Usuario.create!(usuario_params)
+    @usuario = Usuario.create!(usuario_params)
     json_response(@usuario, :created)
   end
 
