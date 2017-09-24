@@ -2,7 +2,7 @@
 lock "3.9.1"
 
 set :application, "smart-tools"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git@github.com:MariaMancipe/smart-tools.git"
 set :branch, 'master'
 set :puma_bind, 'tcp://0.0.0.0:9292'
 
@@ -23,7 +23,7 @@ set :puma_bind, 'tcp://0.0.0.0:9292'
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"

@@ -49,16 +49,21 @@
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-# server "example.com",
-#   user: "user_name",
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: "user_name", # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: "please use keys"
-#   }
+server "34.236.13.118",
+  user: "ubuntu",
+  roles: %w{web app},
+  ssh_options: {
+    user: "ubuntu", # overrides user setting above
+    keys: %w(/home/ubuntu/MPM.pem),
+    forward_agent: false,
+    auth_methods: %w(publickey password)
+    # password: "please use keys"
+  }
 set :stage, :production
 
-server '34.236.13.118', user: 'ubuntu', roles: %w{app web db}
+#production.rb
+# set :user, "ubuntu"
+# server "34.236.13.118", :app, :web, :db, :primary => true
+# ssh_options[:keys] = ["#{ENV['HOME']}/MPM.pem"]
+
+#server '34.236.13.118', user: 'ubuntu', roles: %w{app web db}
