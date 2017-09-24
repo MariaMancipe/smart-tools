@@ -1,5 +1,5 @@
 require 'streamio-ffmpeg'
-require 'mysql3'
+require 'mysql2'
 
 $original = "#{ENV['HOME']}/video_original/"
 $converted = "#{ENV['HOME']}/video_converted/"
@@ -33,10 +33,13 @@ def send_emails
 end
 
 def search_emails
-  connect = Mysql3::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}")
-  result = connect.query("SELECT * FROM VIDEO")
-  result.each {  |x| puts x }
+  #connect = Mysql3::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}")
+  connect = Mysql2::Client.new(:host => "smarttools.ckojm8kxu6a7.us-east-1.rds.amazonaws.com", :username => "smarttools", :password => "smarttools", :database => "smarttools")
+
+  result = connect.query("SELECT * FROM video")
+  result.each {|x| puts x }
+  connect.close
 
 end
 
-search_files
+search_emails
