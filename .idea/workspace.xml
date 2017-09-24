@@ -71,8 +71,8 @@
       <file leaf-file-name="video_converter.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/video_converter.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="438">
+              <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -319,12 +319,12 @@
       <workItem from="1506002615934" duration="10328000" />
       <workItem from="1506216898515" duration="618000" />
       <workItem from="1506260317395" duration="5444000" />
-      <workItem from="1506269335688" duration="11019000" />
+      <workItem from="1506269335688" duration="11334000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27409000" />
+    <option name="totallyTimeSpent" value="27724000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -669,8 +669,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/video_converter.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="438">
+          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
           <folding />
         </state>
       </provider>

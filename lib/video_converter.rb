@@ -1,5 +1,5 @@
 require 'streamio-ffmpeg'
-require 'mysql'
+require 'mysql2'
 
 $original = "#{ENV['HOME']}/video_original/"
 $converted = "#{ENV['HOME']}/video_converted/"
