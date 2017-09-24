@@ -1,6 +1,6 @@
 require 'streamio-ffmpeg'
 require 'mysql2'
-require 'FileUtils'
+require 'fileutils'
 
 $original = "#{ENV['VIDEO_ORIGINAL']}"
 $converted = "#{ENV['VIDEO_CONVERTED']}"
