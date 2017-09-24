@@ -1,5 +1,6 @@
 require 'streamio-ffmpeg'
 require 'mysql2'
+require 'FileUtils'
 
 $original = "#{ENV['VIDEO_ORIGINAL']}"
 $converted = "#{ENV['VIDEO_CONVERTED']}"
@@ -7,7 +8,8 @@ $upload = "#{ENV['VIDEO_UPLOAD']}"
 
 def move_upload_to_original(path)
   new_path = File.basename(path)
-  File.rename(path, "#{$original + new_path}")
+  FileUtils.move path, "#{$original + new_path}"
+  #File.rename(path, "#{$original + new_path}")
 end
 
 def convert_to_mp4(path)
@@ -17,7 +19,7 @@ def convert_to_mp4(path)
   new_path = File.basename(path)
   new_path = $converted+ new_path[0,new_path.length-4]
 
-  movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 1 -threads 1))
+  movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
   move_upload_to_original(path)
 end
 
