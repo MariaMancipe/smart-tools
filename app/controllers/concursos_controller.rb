@@ -17,7 +17,7 @@ class ConcursosController < ApplicationController
   #GET /concursos/:id
   def show
     @concurso = Concurso.find(params[:id])
-    json_response(@concursos)
+    json_response(@concurso)
   end
 
   #GET /concursos/usuario/:usuario_id/:id
