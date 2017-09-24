@@ -7,7 +7,7 @@ $upload = "#{ENV['VIDEO_UPLOAD']}"
 
 def move_upload_to_original(path)
   new_path = File.basename(path)
-  File.rename(path, "./public/video/original/#{new_path}")
+  File.rename(path, "#{$original + new_path}")
 end
 
 def convert_to_mp4(path)
@@ -18,7 +18,7 @@ def convert_to_mp4(path)
   new_path = $converted+ new_path[0,new_path.length-4]
 
   movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 1 -threads 1))
-  #move_upload_to_original(path)
+  move_upload_to_original(path)
 end
 
 def search_files
