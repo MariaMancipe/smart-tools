@@ -27,13 +27,13 @@ class ConcursosController < ApplicationController
 
   #POST /concursos/usuario/:usuario_id
   def create
-    @usuario.concursos.create!(video_params)
+    @usuario.concursos.create!(concurso_params)
     json_response(@usuario, :created)
   end
 
   #UPDATE /concursos/usuario/:usuario_id/:id
   def update
-    @concurso.update(video_params)
+    @concurso.update(concurso_params)
     head :no_content
   end
 
