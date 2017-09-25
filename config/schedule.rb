@@ -17,7 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 10.minutes do
+every 2.minutes do
   runner "/lib/video_converter.rb"
 end
 
