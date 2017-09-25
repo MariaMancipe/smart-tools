@@ -18,7 +18,7 @@
 # end
 
 every 2.minutes do
-  runner "/lib/video_converter.rb"
+  runner "#{ENV['HOME']}/smart-tools/lib/video_converter.rb"
 end
 
 # Learn more: http://github.com/javan/whenever
