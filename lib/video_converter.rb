@@ -30,20 +30,17 @@ def search_files
   Dir.entries($upload).select {|f| convert_to_mp4($upload+f) unless File.directory?(f)}
 end
 
-def send_emails 
 
-end
 
-def search_emails
-  puts "before"
+def mark_state
   connect = Mysql2::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}", :port => 3306)
-  puts "after"
   #connect = Mysql2::Client.new(:host => , :username => "smarttools", :password => "smarttools", :database => "smarttools")
   #connect = Mysql2.new("smarttools.ckojm8kxu6a7.us-east-1.rds.amazonaws.com", "smarttools", "smarttools", "smarttools")
+  Dir.entries($upload).select {|f| puts f unless File.directory?(f)}
   result = connect.query("SELECT * FROM videos")
   result.each {|x| puts x }
   connect.close
 
 end
 
-search_emails
+mark_state

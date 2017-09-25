@@ -5,7 +5,6 @@ class Video < ApplicationRecord
 
   def mark_state
     self.estado ||= 0
-    self.fecha_carga ||= Time.now
   end
   #Validations
 end
