@@ -42,4 +42,4 @@ def search_emails
 
 end
 
-search_emails
+search_files
