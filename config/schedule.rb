@@ -16,9 +16,18 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
+#job_type :runner, "cd :path && rvm 2.0.0 do bundle exec script/rails runner -e :environment ':task' :output"
+
+every 1.days do
+  rake "cron:deliver_email"
+end
 
 every 10.minutes do
   runner "#{ENV['HOME']}/smart-tools/lib/video_converter.rb"
 end
+
+#every 2.minutes do
+#	runner 'ApplicationMailer.send_ready_emails'
+#end
 
 # Learn more: http://github.com/javan/whenever
