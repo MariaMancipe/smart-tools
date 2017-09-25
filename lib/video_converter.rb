@@ -44,7 +44,6 @@ def mark_state
   result = connect.query("SELECT * FROM videos")
   result.each {|x| puts x }
   connect.close
-
 end
 
 mark_state
