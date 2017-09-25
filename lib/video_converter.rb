@@ -40,7 +40,7 @@ def search_emails
   puts "after"
   #connect = Mysql2::Client.new(:host => , :username => "smarttools", :password => "smarttools", :database => "smarttools")
   #connect = Mysql2.new("smarttools.ckojm8kxu6a7.us-east-1.rds.amazonaws.com", "smarttools", "smarttools", "smarttools")
-  result = connect.query("SELECT * FROM video")
+  result = connect.query("SELECT * FROM videos")
   result.each {|x| puts x }
   connect.close
 
