@@ -4,8 +4,7 @@ class Video < ApplicationRecord
   before_save :mark_state
 
   def mark_state
-    puts self.video
-    self.estado ||= 1
+    self.estado ||= 0
   end
   #Validations
 end
