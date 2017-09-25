@@ -43,7 +43,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    @ext = model.fecha_carga + File.extname(original_filename)
+    @ext = File.extname(original_filename)
     @nombre = "#{model.nombre}__#{model.fecha_carga}"
     "#{@nombre}__#{@ext}"
   end
