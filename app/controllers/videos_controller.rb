@@ -21,7 +21,7 @@ class VideosController < ApplicationController
   # POST /videos/concurso/:concurso_id
   def create
     @concurso.videos.create!(video_params)
-    json_response(@concurso, :created)
+    json_response(@concurso.videos, :created)
   end
 
   # PUT /concursos/:concurso_id/videos/:id
@@ -30,7 +30,7 @@ class VideosController < ApplicationController
     head :no_content
   end
 
-  #GET /videos/estado/:estado
+  #GET /videos/:concurso_id/estado/:estado
   def estado
     search_estado
     json_response(@videos_estado)
@@ -50,7 +50,7 @@ class VideosController < ApplicationController
   end
 
   def search_estado
-    @videos_estado = Video.find(params[:estado])
+    @videos_estado = @concurso.videos.find_by!(estado: params[:estado]) if @concurso
   end
 
   def set_concurso_video
