@@ -51,3 +51,5 @@ def search_files
   last = Time.now
   puts "20 Threads in #{last-start}"
 end
+
+search_files
