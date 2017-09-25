@@ -30,12 +30,10 @@ def search_files
   Dir.entries($upload).select {|f| convert_to_mp4($upload+f) unless File.directory?(f)}
 end
 
-<<<<<<< HEAD
 def send_emails 
+
 end
 
-=======
->>>>>>> 48e372466bdbea46946897d21ee543870799c8b3
 def search_emails
   puts "before"
   connect = Mysql2::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}", :port => 3306)
