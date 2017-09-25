@@ -28,7 +28,7 @@ class ConcursosController < ApplicationController
   #POST /concursos/usuario/:usuario_id
   def create
     @usuario.concursos.create!(concurso_params)
-    json_response(@usuario, :created)
+    json_response(@usuario.concursos, :created)
   end
 
   #UPDATE /concursos/usuario/:usuario_id/:id
