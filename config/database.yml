@@ -10,8 +10,7 @@ default: &default
   timeout: 5000
 
 development:
-  production:
-    <<: *default
+  <<: *default
     database: <%= ENV["SMART_TOOLS_DB_NAME"] %>
     host: <%= ENV["SMART_TOOLS_DB_HOST"] %>
     username: <%= ENV["SMART_TOOLS_DB_USER"] %>
@@ -23,7 +22,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: db/test.mysql2
 
 production:
   <<: *default
