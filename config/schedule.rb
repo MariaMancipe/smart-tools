@@ -22,7 +22,7 @@ every 1.days do
   rake "cron:deliver_email"
 end
 
-every 10.minutes do
+every 2.minutes do
   runner "#{ENV['HOME']}/smart-tools/lib/video_converter.rb"
 end
 

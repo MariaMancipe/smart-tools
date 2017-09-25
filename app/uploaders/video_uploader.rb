@@ -11,7 +11,10 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
+<<<<<<< HEAD
     put "#{ENV['VIDEO_UPLOAD']}"
+=======
+>>>>>>> 48e372466bdbea46946897d21ee543870799c8b3
     "#{ENV['VIDEO_UPLOAD']}"
   end
 
@@ -38,7 +41,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(avi mpg mov mp4 flv wmv)
+    %w(avi mpg mov mp4 flv wmv 3gp)
   end
 
   # Override the filename of the uploaded files:
