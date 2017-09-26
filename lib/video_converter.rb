@@ -34,14 +34,14 @@ def create_query(f)
   @split = f.split("__")
   #@date = @split[3]
   sentencia = "UPDATE videos SET estado=2, video_convertido=#{f}, video_original=#{f} WHERE nombre=#{@split.at(0)} "
-  return "UPDATE video SET estado=2 WHERE nombre=#{@split.at(0)} AND id=#{@split.at(1)}"
+  return "UPDATE video SET estado=2 WHERE nombre=\'#{@split.at(0)}\' AND id=#{@split.at(1)}"
 end
 
 def mark_state
   connect = Mysql2::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}", :port => 3306)
   #connect = Mysql2::Client.new(:host => , :username => "smarttools", :password => "smarttools", :database => "smarttools")
   #connect = Mysql2.new("smarttools.ckojm8kxu6a7.us-east-1.rds.amazonaws.com", "smarttools", "smarttools", "smarttools")
-  Dir.entries($upload).select {|f|  puts create_query(f) unless File.directory?(f)}
+  Dir.entries($upload).select {|f|  connect.query(puts create_query(f)) unless File.directory?(f)}
   #result = connect.query("SELECT * FROM videos")
   #result.each {|x| puts x }
   connect.close
