@@ -23,7 +23,7 @@ every 1.days do
 end
 
 every 2.minutes do
-  runner "#{ENV['HOME']}/smart-tools/lib/video_converter.rb"
+  rake "cron:convert_video"
 end
 
 #every 2.minutes do
