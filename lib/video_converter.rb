@@ -41,7 +41,7 @@ def mark_state
   connect = Mysql2::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}", :port => 3306)
   #connect = Mysql2::Client.new(:host => , :username => "smarttools", :password => "smarttools", :database => "smarttools")
   #connect = Mysql2.new("smarttools.ckojm8kxu6a7.us-east-1.rds.amazonaws.com", "smarttools", "smarttools", "smarttools")
-  Dir.entries($upload).select {|f|  connect.query(puts create_query(f)) unless File.directory?(f)}
+  Dir.entries($upload).select {|f|  connect.query(create_query(f)) unless File.directory?(f)}
   #result = connect.query("SELECT * FROM videos")
   #result.each {|x| puts x }
   connect.close
