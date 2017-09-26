@@ -34,7 +34,7 @@ def create_query(f)
   @split = f.split("__")
   #@date = @split[3]
   sentencia = "UPDATE videos SET estado=2, video_convertido=#{f}, video_original=#{f} WHERE nombre=#{@split.at(0)} "
-  return "UPDATE video SET estado=2 WHERE nombre=\'#{@split.at(0)}\' AND id=#{@split.at(1)}"
+  return "UPDATE videos SET estado=2 WHERE nombre=\'#{@split.at(0)}\' AND id=#{@split.at(1)}"
 end
 
 def mark_state
