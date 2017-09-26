@@ -7,6 +7,6 @@ namespace :cron do
 
   desc "Converts videos"
   task convert_video: :environment do
-    Run "#{ENV['HOME']}/smart-tools/lib/video_converter.rb"
+    ruby "#{ENV['HOME']}/smart-tools/lib/video_converter.rb"
   end
 end
