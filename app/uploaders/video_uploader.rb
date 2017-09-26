@@ -44,7 +44,8 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
     @ext = File.extname(original_filename)
-    @nombre = "#{model.nombre}__#{model.nombre_concursante}__#{model.apellido_concursante}__#{model.created_at}"
+    #@nombre = "#{model.nombre}__#{model.nombre_concursante}__#{model.apellido_concursante}__#{model.created_at}"
+    @nombre = "#{model.nombre}__#{model.id}"
     "#{@nombre}__#{@ext}"
   end
 
