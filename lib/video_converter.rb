@@ -7,7 +7,7 @@ $converted = "#{ENV['VIDEO_CONVERTED']}"
 $upload = "#{ENV['VIDEO_UPLOAD']}"
 
 def move_upload_to_original
-  Dir.entries($upload).select {|f| FileUtils.move path, "#{$original + File.basename(f)}" unless File.directory?(f)}
+  Dir.entries($upload).select {|f| FileUtils.move f, "#{$original + File.basename(f)}" unless File.directory?(f)}
 end
 
 def convert_to_mp4(path)
