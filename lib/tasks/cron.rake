@@ -5,7 +5,8 @@ namespace :cron do
   	ApplicationMailer.send_ready_emails
   end
 
+  desc "Converts videos"
   task convert_video: :environment do
-    Run lib/video_converter.rb
+    Run ENV[$HOME]/smart-tools/lib/video_converter.rb
   end
 end
