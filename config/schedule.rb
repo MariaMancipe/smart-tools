@@ -22,7 +22,7 @@ every 2.minutes do
   rake "cron:deliver_email"
 end
 
-every 2.minutes do
+every 5.minutes do
   rake "cron:convert_video"
 end
 

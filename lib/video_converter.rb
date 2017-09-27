@@ -7,7 +7,7 @@ $converted = "#{ENV['VIDEO_CONVERTED']}"
 $upload = "#{ENV['VIDEO_UPLOAD']}"
 
 def move_upload_to_original
-  Dir.entries($upload).select {|f| FileUtils.move f, "#{$original + File.basename(f)}" unless File.directory?(f)}
+  Dir.entries($upload).select {|f| FileUtils.move $upload+f, $original + File.basename(f) unless File.directory?(f)}
 end
 
 def convert_to_mp4(path)
@@ -19,7 +19,7 @@ def convert_to_mp4(path)
 end
 
 def search_files
-
+  puts "entra"
   Dir.mkdir($original) unless File.exist?($original)
   Dir.mkdir($converted) unless File.exist?($converted)
   Dir.entries($upload).select {|f| convert_to_mp4($upload+f) unless File.directory?(f)}
