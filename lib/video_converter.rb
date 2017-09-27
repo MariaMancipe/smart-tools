@@ -19,7 +19,7 @@ def convert_to_mp4(path)
 end
 
 def search_files
-
+  puts "entra"
   Dir.mkdir($original) unless File.exist?($original)
   Dir.mkdir($converted) unless File.exist?($converted)
   Dir.entries($upload).select {|f| convert_to_mp4($upload+f) unless File.directory?(f)}
