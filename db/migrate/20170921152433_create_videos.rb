@@ -4,7 +4,7 @@ class CreateVideos < ActiveRecord::Migration[5.1]
       t.string :nombre
       t.integer :duracion
       t.datetime :fecha_carga
-      t.integer :estado
+      t.float :estado
       t.string :nombre_concursante
       t.string :apellido_concursante
       t.string :correo_concursante
