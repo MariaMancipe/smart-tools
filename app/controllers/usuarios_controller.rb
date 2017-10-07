@@ -19,10 +19,11 @@ class UsuariosController < ApplicationController
     json_response(@usuario)
   end
 
-  #GET /usuarios/:correo
+  #GET /usuarios/credenciales
   def showCredentials
-    @usuario = Usuario.find_by!(correo: params[:correo])
-    json_response(@usuario)
+    puts credenciales_params
+    #@usuario = Usuario.find_by!(correo: params[:correo])
+    #json_response(@usuario)
   end
 
   #PUT /usuarios/:id
@@ -41,6 +42,10 @@ class UsuariosController < ApplicationController
 
   def usuario_params
     params.permit(:nombre, :apellido, :correo, :empresa, :clave)
+  end
+
+  def credenciales_params
+    params.permit(:correo, :clave)
   end
 
   def set_usuario
