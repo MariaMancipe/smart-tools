@@ -45,7 +45,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   def filename
     @ext = File.extname(original_filename)
     #@nombre = "#{model.nombre}__#{model.nombre_concursante}__#{model.apellido_concursante}__#{model.created_at}"
-    @nombre = "#{model.nombre}__#{model.id}"
+    @nombre = "#{model.nombre}__#{model.duracion}"
     "#{@nombre}__#{@ext}"
   end
 

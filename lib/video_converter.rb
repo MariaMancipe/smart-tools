@@ -30,7 +30,7 @@ end
 def create_query(f)
   @split = f.split("__")
   converted = File.basename(f, File.extname(f))+".mp4"
-  return "UPDATE videos SET estado=1, video_convertido=\'#{ENV['VIDEO_CONVERTED'] + converted}\', video_original=\'#{ENV['VIDEO_ORIGINAL']+ f}\' WHERE nombre=\'#{@split.at(0)}\' AND id=#{@split.at(1)}"
+  return "UPDATE videos SET estado=1, video_convertido=\'#{ENV['VIDEO_CONVERTED'] + converted}\', video_original=\'#{ENV['VIDEO_ORIGINAL']+ f}\' WHERE nombre=\'#{@split.at(0)}\' AND duracion=#{@split.at(1)}"
 end
 
 def mark_state

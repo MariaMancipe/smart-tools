@@ -19,6 +19,12 @@ class UsuariosController < ApplicationController
     json_response(@usuario)
   end
 
+  #GET /usuarios/:correo/:clave
+  def showCredentials
+    @Usuario = Usuario.find(params[:correo, :clave])
+    json_response(@usuario)
+  end
+
   #PUT /usuarios/:id
   def update
     @usuario.update(usuario_params)

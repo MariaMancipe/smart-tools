@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #USUARIOS
   get '/usuarios' => 'usuarios#index'
   get '/usuarios/:id' => 'usuarios#show'
+  get '/usuarios/:correo/:clave' => 'usuarios#showCredentials'
   post '/usuarios' => 'usuarios#create'
 
   #CONCURSOS
