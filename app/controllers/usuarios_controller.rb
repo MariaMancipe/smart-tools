@@ -19,9 +19,9 @@ class UsuariosController < ApplicationController
     json_response(@usuario)
   end
 
-  #GET /usuarios/:correo/:clave
+  #GET /usuarios/:correo
   def showCredentials
-    @usuario = Usuario.find(params[:correo, :clave])
+    @usuario = Usuario.find(params[:correo])
     json_response(@usuario)
   end
 
