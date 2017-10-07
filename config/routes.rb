@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #USUARIOS
   get '/usuarios' => 'usuarios#index'
   get '/usuarios/:id' => 'usuarios#show'
-  get '/usuarios/credenciales/:correo' => 'usuarios#showCredentials', :constraints => { :correo => /[^\/]+/ }
+  get '/usuarios/credenciales/:correo/:clave' => 'usuarios#showCredentials', :constraints => { :correo => /[^\/]+/ }
   post '/usuarios' => 'usuarios#create'
 
   #CONCURSOS
