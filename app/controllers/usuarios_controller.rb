@@ -21,7 +21,7 @@ class UsuariosController < ApplicationController
 
   #GET /usuarios/:correo/:clave
   def showCredentials
-    @Usuario = Usuario.find(params[:correo, :clave])
+    @usuario = Usuario.find(params[:correo, :clave])
     json_response(@usuario)
   end
 
