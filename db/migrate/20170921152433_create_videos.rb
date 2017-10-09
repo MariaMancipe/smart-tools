@@ -2,9 +2,9 @@ class CreateVideos < ActiveRecord::Migration[5.1]
   def change
     create_table :videos do |t|
       t.string :nombre
-      t.integer :duracion
+      t.float :duracion
       t.datetime :fecha_carga
-      t.float :estado
+      t.integer :estado
       t.string :nombre_concursante
       t.string :apellido_concursante
       t.string :correo_concursante
