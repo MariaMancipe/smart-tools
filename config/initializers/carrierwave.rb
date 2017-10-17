@@ -1,6 +1,5 @@
 # config/initializers/carrierwave.rb
 # This file is not created by default so you might have to create it yourself.
-require 'carrierwave/storage/fog'
 CarrierWave.configure do |config|
 
   # Use local storage if in development or test

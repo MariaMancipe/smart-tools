@@ -16,7 +16,7 @@ gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'fog-aws'
+gem 'fog'
 
 gem 'carrierwave'
 
