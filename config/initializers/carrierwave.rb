@@ -1,6 +1,6 @@
 # config/initializers/carrierwave.rb
 # This file is not created by default so you might have to create it yourself.
-
+require 'carrierwave/storage/fog'
 CarrierWave.configure do |config|
 
   # Use local storage if in development or test
@@ -11,12 +11,13 @@ CarrierWave.configure do |config|
   # end
 
   # Use AWS storage if in production
-  if Rails.env.production? || Rails.env.development? || Rails.env.test?
-    CarrierWave.configure do |config|
-      config.storage = :fog
-    end
-  end
+  # if Rails.env.production? || Rails.env.development? || Rails.env.test?
+  #   CarrierWave.configure do |config|
+  #
+  #   end
+  # end
 
+  config.storage = :fog
   config.fog_credentials = {
       :provider               => 'AWS',                             # required
       :aws_access_key_id      => "#{ENV['ACCESS_KEY_ID']}",         # required

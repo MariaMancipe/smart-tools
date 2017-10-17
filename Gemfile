@@ -16,13 +16,15 @@ gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'fog-aws'
+
 gem 'carrierwave'
 
 gem 'streamio-ffmpeg'
 
 gem 'whenever', :require => false
 
-gem 'fog'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
