@@ -21,6 +21,7 @@ class VideosController < ApplicationController
   # POST /videos/concurso/:concurso_id
   def create
     @concurso.videos.create!(video_params)
+    #puts :created
     json_response(@concurso.videos, :created)
   end
 
