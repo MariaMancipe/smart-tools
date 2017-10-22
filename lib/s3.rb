@@ -9,7 +9,7 @@ s3 = Aws::S3::Resource.new(
 #s3.bucket(ENV['S3_BUCKET']).object('Hola Colombia__9876543__.avi').get(response_target: '/public/examples')
 
 open('/home/ubuntu/Hola Colombia__9876543__.avi', 'w') do |file|
-  AWS::S3::S3Object.stream('Hola Colombia__9876543__.avi', ENV['S3_BUCKET']) do |chunk|
+  Aws::S3::S3Object.stream('Hola Colombia__9876543__.avi', ENV['S3_BUCKET']) do |chunk|
     file.write(chunk)
   end
 end
