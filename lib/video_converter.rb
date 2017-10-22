@@ -15,7 +15,6 @@ def convert_to_mp4(path)
   movie = FFMPEG::Movie.new(path)
   new_path = $converted+ File.basename(path,File.extname(path))
   movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
-
 end
 
 def search_files

@@ -10,7 +10,6 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def self.query_unmailed_videos
-  	#return "UPDATE videos SET estado=2 WHERE estado =1"
   	return "select id, correo_concursante from videos where estado = 1"
   end
 
@@ -22,7 +21,7 @@ class ApplicationMailer < ActionMailer::Base
   def self.send_ready_emails
 	ids = Array.new
 	corrs = Array.new
-	connect = Mysql2::Client.new(:host => "smarttools.ckojm8kxu6a7.us-east-1.rds.amazonaws.com", :username => "smarttools", :password => "smarttools", :database => "smarttools", :port => 3306)
+	connect = Mysql2::Client.new(:host => ENV['SMART_TOOLS_DB_HOST'], :username => ENV['SMART_TOOLS_DB_USER'], :password => ENV['SMART_TOOLS_DB_PASSWD'], :database => ENV['SMART_TOOLS_DB_NAME'], :port => 3306)
 	puts ' CONNECTED'
 	result = connect.query(query_unmailed_videos)
 	if result
