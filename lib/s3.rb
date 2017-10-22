@@ -6,10 +6,4 @@ s3 = Aws::S3::Resource.new(
     secret_access_key: ENV['SECRET_ACCESS_KEY']
 )
 
-s3.bucket(ENV['S3_BUCKET']).object('Hola Colombia__9876543__.avi').get(response_target: '/home/ubuntu/Hola Colombia__9876543__.avi')
-
-# open('/home/ubuntu/Hola Colombia__9876543__.avi', 'w') do |file|
-#   Aws::S3::Object.stream('Hola Colombia__9876543__.avi', ENV['S3_BUCKET']) do |chunk|
-#     file.write(chunk)
-#   end
-# end
+s3.bucket(ENV['S3_BUCKET']).object('videos/Hola Colombia__9876543__.avi').get(response_target: '/home/ubuntu/Hola Colombia__9876543__.avi')
