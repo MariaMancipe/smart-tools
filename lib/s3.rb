@@ -23,12 +23,12 @@ def convert_to_mp4(path)
 end
 
 def download_video(path)
-  $s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_UPLOADS_FOLDER']+path}").get(response_target: "#{ENV[VIDEO_UPLOAD]+path}")
+  $s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_UPLOADS_FOLDER']+path}").get(response_target: "#{ENV['VIDEO_UPLOAD']+path}")
 end
 
 def upload_video(path)
   obj = $s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_CONVERTED_FOLDER']+path}")
-  obj.upload_file("#{ENV[VIDEO_CONVERTED]+path}")
+  obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}")
 
 end
 
