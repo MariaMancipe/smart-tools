@@ -1,6 +1,6 @@
 require 'aws-sdk'
 
-s3 = Aws::S3::Resource.new(
+$s3 = Aws::S3::Resource.new(
     region: ENV['S3_REGION'],
     access_key_id: ENV['ACCESS_KEY_ID'],
     secret_access_key: ENV['SECRET_ACCESS_KEY']
