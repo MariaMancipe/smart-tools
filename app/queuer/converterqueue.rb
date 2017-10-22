@@ -119,6 +119,8 @@ def download_video(path)
 end
 
 def upload_video(path)
+	obj = s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_CONVERTED_FOLDER']+path}")
+	obj.upload_file("#{ENV[VIDEO_UPLOAD]+path}")
 
 end
 
