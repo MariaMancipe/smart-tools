@@ -2,6 +2,7 @@ require 'aws-sdk-sqs'  # v2: require 'aws-sdk'
 require 'fileutils'
 require 'streamio-ffmpeg'
 require 'mysql2'
+require 'aws-sdk'
 
 $sqs = Aws::SQS::Client.new(
 	region: 'us-east-1',
@@ -77,15 +78,6 @@ def retrieve_message_from_converter
 	end
 end
 
-def convert_to_mp4(path)
-  puts "convert to mp4 #{path}"
-  #movie = FFMPEG::Movie.new(path)
-  #new_path = $converted + File.basename(path,File.extname(path))
-  #Check path from S3
-  #movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
-  new_path = '';
-  return new_path
-end
 
 
 def send_message_to_converter_queue(mess)
@@ -109,6 +101,28 @@ def send_message_to_converter_queue(mess)
     )
 	puts message_result.message_id
 end
+
+#--------------------------- VIDEO CONVERTER-UPLOADER-DOWNLOADER -------------------------------
+
+def convert_to_mp4(path)
+	puts "convert to mp4 #{path}"
+	#movie = FFMPEG::Movie.new(path)
+	#new_path = $converted + File.basename(path,File.extname(path))
+	#Check path from S3
+	#movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
+	new_path = '';
+	return new_path
+end
+
+def download_video(path)
+
+end
+
+def upload_video(path)
+
+end
+
+
 
 retrieve_message_from_converter
 #send_message_to_converter_queue('Escenario de prueba')
