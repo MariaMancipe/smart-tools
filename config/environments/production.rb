@@ -61,9 +61,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {  
    :enable_starttls_auto => true,
+   :address => ENV['AWS_SMTP_ADDRESS'],
    :user_name => ENV['AWS_SMTP_USER_NAME'],
-   :address => ENV['AWS_SMTP_ADDRESS'],   
-   :password => ENV['AWS_SMTP_PASSWORD'],  
+   :password => ENV['AWS_SMTP_PASSWORD'],
    :port => 587
   } 
 
