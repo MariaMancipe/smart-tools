@@ -2,6 +2,7 @@ require 'aws-sdk-sqs'  # v2: require 'aws-sdk'
 require 'fileutils'
 require 'streamio-ffmpeg'
 require 'mysql2'
+require 'aws-sdk'
 
 $sqs = Aws::SQS::Client.new(
 	region: 'us-east-1',
@@ -77,15 +78,6 @@ def retrieve_message_from_converter
 	end
 end
 
-def convert_to_mp4(path)
-  puts "convert to mp4 #{path}"
-  #movie = FFMPEG::Movie.new(path)
-  #new_path = $converted + File.basename(path,File.extname(path))
-  #Check path from S3
-  #movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
-  new_path = '';
-  return new_path
-end
 
 
 def send_message_to_converter_queue(mess)
@@ -109,6 +101,39 @@ def send_message_to_converter_queue(mess)
     )
 	puts message_result.message_id
 end
+
+#--------------------------- VIDEO CONVERTER-UPLOADER-DOWNLOADER -------------------------------
+
+$s3 = Aws::S3::Resource.new(
+		region: ENV['S3_REGION'],
+		access_key_id: ENV['ACCESS_KEY_ID'],
+		secret_access_key: ENV['SECRET_ACCESS_KEY']
+)
+
+def convert_to_mp4(path)
+	puts "convert to mp4 #{ENV['VIDEO_UPLOAD']+path}"
+	Dir.mkdir("#{ENV['VIDEO_UPLOAD']}") unless File.exist?("#{ENV['VIDEO_UPLOAD']}")
+	Dir.mkdir("#{ENV['VIDEO_CONVERTED']}") unless File.exist?("#{ENV['VIDEO_CONVERTED']}")
+	download_video(path)
+	movie = FFMPEG::Movie.new("#{ENV['VIDEO_UPLOAD']+path}")
+	basename = File.basename(path,File.extname(path))
+	new_path = ENV['VIDEO_CONVERTED'] + basename
+	movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
+	upload_video("#{basename}.mp4")
+	new_path = '';
+	return new_path
+end
+
+def download_video(path)
+	$s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_UPLOADS_FOLDER']+path}").get(response_target: "#{ENV['VIDEO_UPLOAD']+path}")
+end
+
+def upload_video(path)
+	obj = $s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_CONVERTED_FOLDER']+path}")
+	obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}")
+
+end
+
 
 retrieve_message_from_converter
 #send_message_to_converter_queue('Escenario de prueba')
