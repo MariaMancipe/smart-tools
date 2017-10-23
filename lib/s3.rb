@@ -38,7 +38,7 @@ def upload_video(path)
 end
 
 def delete_files(upload,converted)
-  File.detele(upload)
+  File.delete(upload)
   File.delete(converted)
 end
 
