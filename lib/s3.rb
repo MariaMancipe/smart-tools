@@ -13,9 +13,9 @@ $s3 = Aws::S3::Resource.new(
 # obj.upload_file('/home/ubuntu/Hola Colombia__9876543__.avi')
 
 def convert_to_mp4(path)
-  puts "convert to mp4 #{path}"
+  puts "convert to mp4 #{ENV['VIDEO_UPLOAD']+path}"
   download_video(path)
-  movie = FFMPEG::Movie.new(path)
+  movie = FFMPEG::Movie.new("#{ENV['VIDEO_UPLOAD']+path}")
   new_path = ENV[VIDEO_CONVERTED] + File.basename(path,File.extname(path))
   movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
   upload_video(path)
