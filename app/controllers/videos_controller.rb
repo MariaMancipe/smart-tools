@@ -21,7 +21,6 @@ class VideosController < ApplicationController
   # POST /videos/concurso/:concurso_id
   def create
     @concurso.videos.create!(video_params)
-    #puts :created
     json_response(@concurso.videos, :created)
   end
 
@@ -40,6 +39,7 @@ class VideosController < ApplicationController
 
 
   private
+
 
   def video_params
     params.permit(:nombre, :duracion, :nombre_concursante, :apellido_concursante, :correo_concursante, :mensaje_concursante, :fecha_carga, :video, :estado, :concurso_id)
