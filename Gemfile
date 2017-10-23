@@ -28,6 +28,8 @@ gem 'streamio-ffmpeg'
 
 gem 'whenever', :require => false
 
+gem 'activemodel-serializers-xml'
+gem 'active_model_serializers'
 
 gem 'dynamoid'
 
