@@ -28,8 +28,6 @@ gem 'carrierwave'
 
 gem 'streamio-ffmpeg'
 
-gem 'aws-sdk-rails'
-
 gem 'whenever', :require => false
 
 gem 'activemodel-serializers-xml'
