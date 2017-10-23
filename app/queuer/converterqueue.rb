@@ -120,6 +120,7 @@ def convert_to_mp4(path)
 	new_path = ENV['VIDEO_CONVERTED'] + basename
 	movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
 	upload_video("#{basename}.mp4")
+	delete_files("#{ENV['VIDEO_UPLOAD']+path}","#{new_path}.mp4")
 	new_path = '';
 	return new_path
 end
@@ -131,7 +132,11 @@ end
 def upload_video(path)
 	obj = $s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_CONVERTED_FOLDER']+path}")
 	obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}")
+end
 
+def delete_files(upload,converted)
+	File.delete(upload)
+	File.delete(converted)
 end
 
 

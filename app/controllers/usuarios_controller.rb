@@ -1,21 +1,22 @@
 class UsuariosController < ApplicationController
-  before_action :set_usuario, only: [:show, :update, :destroy]
+  #before_action :set_usuario, only: [:show, :update, :destroy]
 
   #GET /usuarios
 
   def index
-    @usuarios = Usuario.all
+    @usuarios = Usuariody.all
     json_response(@usuarios)
   end
 
   #POST /usuarios
   def create
-    @usuario = Usuario.create!(usuario_params)
+    @usuario = Usuariody.new(usuario_params)
     json_response(@usuario, :created)
   end
 
   #GET /usuarios/:id
   def show
+    @usuario = Usuariody.find(params[:id])
     json_response(@usuario)
   end
 
