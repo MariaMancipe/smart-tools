@@ -16,8 +16,6 @@ gem 'file-utils'
 # Amazon SDK
 gem 'aws-sdk', '~>2'
 
-gem 'aws-sdk-resources'
-
 gem 'concurrent-ruby'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
