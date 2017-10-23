@@ -1,4 +1,5 @@
 require 'aws-sdk'
+require 'streamio-ffmpeg'
 
 $s3 = Aws::S3::Resource.new(
     region: ENV['S3_REGION'],
