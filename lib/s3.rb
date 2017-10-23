@@ -18,9 +18,10 @@ def convert_to_mp4(path)
   Dir.mkdir("#{ENV['VIDEO_CONVERTED']}") unless File.exist?("#{ENV['VIDEO_CONVERTED']}")
   download_video(path)
   movie = FFMPEG::Movie.new("#{ENV['VIDEO_UPLOAD']+path}")
-  new_path = ENV['VIDEO_CONVERTED'] + File.basename(path,File.extname(path))
+  basename = File.basename(path,File.extname(path))
+  new_path = ENV['VIDEO_CONVERTED'] + basename
   movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
-  upload_video("#{new_path}.mp4")
+  upload_video("#{basename}.mp4")
   new_path = '';
   return new_path
 end
