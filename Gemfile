@@ -14,7 +14,7 @@ gem 'mysql2'
 gem 'file-utils'
 
 # Amazon SDK
-gem 'aws-sdk'
+gem 'aws-sdk', '~>2'
 
 gem 'aws-sdk-resources'
 
@@ -37,7 +37,7 @@ gem 'whenever', :require => false
 gem 'activemodel-serializers-xml'
 gem 'active_model_serializers'
 
-gem 'dynamoid'
+gem 'dynamoid', '~> 1'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
