@@ -1,19 +1,20 @@
 require 'aws-sdk-sqs'
 
-class UploaderQueuer 
-	$sqs = Aws::SQS::Client.new(
-		region: 'us-east-1',
-		access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-		secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-	)
+class UploaderQueuer
+	
 	# Prueba de envio
-	def send_message_to_converter_queue(mess, idVid, vidurl, usermail)
-		message_result = $sqs.send_message(
+	def self.send_message_to_converter_queue(mess, idVid, vidurl, usermail)
+		sqs = Aws::SQS::Client.new(
+			region: 'us-east-1',
+			access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+			secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+		)
+		message_result = sqs.send_message(
 			queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu', 
 			message_body: mess,
 			message_attributes: {
 		      "IDVid" => {
-		        string_value: idVid,
+		        string_value: idVid.to_s,
 		        data_type: "String"
 		      },
 		      "URL" => {

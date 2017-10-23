@@ -1,3 +1,5 @@
+require './app/queuer/uploadqueuer'
+
 class Video < ApplicationRecord
   belongs_to :concurso
   mount_uploader :video, VideoUploader
@@ -9,7 +11,7 @@ class Video < ApplicationRecord
   end
 
   def send_to_queue
-    UploaderQueuer.send_message_to_converter_queue(mess, self.id, self.video_original, self.correo_concursante)
+    UploaderQueuer::send_message_to_converter_queue('New video uploaded!', self.id, self.video_original, self.correo_concursante)
   end
   #Validations
 end
