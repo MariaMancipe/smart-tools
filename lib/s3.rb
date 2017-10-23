@@ -14,11 +14,13 @@ $s3 = Aws::S3::Resource.new(
 
 def convert_to_mp4(path)
   puts "convert to mp4 #{ENV['VIDEO_UPLOAD']+path}"
+  Dir.mkdir("#{ENV['VIDEO_UPLOAD']}") unless File.exist?("#{ENV['VIDEO_UPLOAD']}")
+  Dir.mkdir("#{ENV['VIDEO_CONVERTED']}") unless File.exist?("#{ENV['VIDEO_CONVERTED']}")
   download_video(path)
   movie = FFMPEG::Movie.new("#{ENV['VIDEO_UPLOAD']+path}")
   new_path = ENV['VIDEO_CONVERTED'] + File.basename(path,File.extname(path))
   movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
-  upload_video(path)
+  upload_video("#{new_path}.mp4")
   new_path = '';
   return new_path
 end
