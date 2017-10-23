@@ -15,6 +15,10 @@ gem 'file-utils'
 
 # Amazon SDK
 gem 'aws-sdk'
+
+gem 'aws-sdk-resources'
+
+gem 'concurrent-ruby'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

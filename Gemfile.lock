@@ -657,6 +657,7 @@ DEPENDENCIES
   activemodel-serializers-xml
   aws-sdk
   aws-sdk-rails
+  aws-sdk-resources
   byebug
   capistrano
   capistrano-bundler
@@ -664,6 +665,7 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano3-puma
   carrierwave
+  concurrent-ruby
   database_cleaner
   dynamoid
   factory_girl_rails (~> 4.0)

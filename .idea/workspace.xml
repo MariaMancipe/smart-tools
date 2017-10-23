@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b413fa86-55ce-420d-87cf-dd420fed3082" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/dynamoid.rb" afterPath="$PROJECT_DIR$/config/initializers/dynamoid.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -54,7 +55,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dynamoid.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dynamoid.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/initializers/dynamoid.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="147">
@@ -84,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="294">
+              <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -156,9 +157,9 @@
         <option value="$PROJECT_DIR$/app/models/concursody.rb" />
         <option value="$PROJECT_DIR$/app/models/videody.rb" />
         <option value="$PROJECT_DIR$/app/controllers/usuarios_controller.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/config/initializers/dynamoid.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -350,12 +351,12 @@
       <workItem from="1508617421318" duration="589000" />
       <workItem from="1508710618280" duration="14505000" />
       <workItem from="1508727780068" duration="3746000" />
-      <workItem from="1508760062067" duration="1394000" />
+      <workItem from="1508760062067" duration="1897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65385000" />
+    <option name="totallyTimeSpent" value="65888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -740,14 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
@@ -776,6 +769,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
           <folding />
         </state>
       </provider>
