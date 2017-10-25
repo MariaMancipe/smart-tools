@@ -25,10 +25,10 @@ class VideosController < ApplicationController
 
     @video = Videody.new(video_params)
     @video.save
-    @concurso.videos.create(video_params)
-    @video.concurso = @concurso
+    #@concurso.videos.create(video_params)
+    #@video.concurso = @concurso
 
-    json_response(@concurso.videos, :created)
+    json_response(@video, :created)
   end
 
   # PUT /concursos/:concurso_id/videos/:id
