@@ -10,7 +10,7 @@ class UsuariosController < ApplicationController
 
   #POST /usuarios
   def create
-    print usuario_params.nombre
+    print usuario_params
     @usuario = Usuariody.new(usuario_params)
     @usuario.save
     json_response(@usuario, :created)
@@ -43,7 +43,7 @@ class UsuariosController < ApplicationController
   private
 
   def usuario_params
-    params.permit(:nombre, :apellido, :correo, :empresa, :clave)
+    params.permit(:nombre, :apellido, :correo, :empresa, :clave).to_h
   end
 
   def credenciales_params
