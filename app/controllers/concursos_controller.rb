@@ -1,11 +1,12 @@
 class ConcursosController < ApplicationController
 
-  before_action :set_usuario, only: [:indexUsuario, :showUsuario, :create, :update, :destroy]
-  before_action :set_usuario_concurso, only: [:showUsuario, :update, :destroy]
+  before_action :set_usuario, only: [ :create]
+  #before_action :set_usuario, only: [:indexUsuario, :showUsuario, :create, :update, :destroy]
+  #before_action :set_usuario_concurso, only: [:showUsuario, :update, :destroy]
 
   # GET /concursos
   def index
-    @concursos = Concurso.all
+    @concursos = Concursody.all
     json_response(@concursos)
   end
 
@@ -27,7 +28,9 @@ class ConcursosController < ApplicationController
 
   #POST /concursos/usuario/:usuario_id
   def create
-    @usuario.concursos.create!(concurso_params)
+    @concurso = Concursody.new(concurso_params)
+    @concurso.save
+    @usuario.concursos.create(concurso_params)
     json_response(@usuario.concursos, :created)
   end
 
@@ -46,11 +49,11 @@ class ConcursosController < ApplicationController
   private
 
   def concurso_params
-    params.permit(:nombre, :fecha_inicio, :fecha_fin, :url, :descripcion, :usuario_id, :picture)
+    params.permit(:nombre, :fecha_inicio, :fecha_fin, :url, :descripcion, :usuario_id, :picture).to_h
   end
 
   def set_usuario
-    @usuario = Usuario.find(params[:usuario_id])
+    @usuario = Usuariody.find(params[:usuario_id])
   end
 
   def set_usuario_concurso

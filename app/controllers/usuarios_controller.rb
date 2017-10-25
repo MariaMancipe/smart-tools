@@ -30,7 +30,8 @@ class UsuariosController < ApplicationController
 
   #PUT /usuarios/:id
   def update
-    @usuario.update(usuario_params)
+    @usuario = Usuariody.find(params[:id])
+    @usuario.update_attributes(usuario_params)
     head :no_content
   end
 
