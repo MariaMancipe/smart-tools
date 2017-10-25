@@ -1,7 +1,6 @@
 class ConcursosController < ApplicationController
 
-  before_action :set_usuario, only: [ :create]
-  #before_action :set_usuario, only: [:indexUsuario, :showUsuario, :create, :update, :destroy]
+  before_action :set_usuario, only: [:indexUsuario, :showUsuario, :create, :update, :destroy]
   #before_action :set_usuario_concurso, only: [:showUsuario, :update, :destroy]
 
   # GET /concursos
@@ -17,7 +16,7 @@ class ConcursosController < ApplicationController
 
   #GET /concursos/:id
   def show
-    @concurso = Concurso.find(params[:id])
+    @concurso = Concursody.find(params[:id])
     json_response(@concurso)
   end
 
