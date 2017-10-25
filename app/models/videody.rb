@@ -16,7 +16,7 @@ class Videody
   field :video_original
   field :video
 
-  
+
 
   belongs_to :concurso ,:class => Concursody
 
