@@ -24,9 +24,10 @@ class VideosController < ApplicationController
     #@concurso.videos.create!(video_params)
 
     @video = Videody.new(video_params)
+    @video.save
     @concurso.videos.create(video_params)
     @video.concurso = @concurso
-    @video.save
+
     json_response(@concurso.videos, :created)
   end
 
