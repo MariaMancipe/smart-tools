@@ -4,7 +4,7 @@ class VideosController < ApplicationController
 
   # GET /videos
   def all
-    @videos = Video.all
+    @videos = Videody.all
     json_response(@videos)
   end
 
@@ -15,13 +15,18 @@ class VideosController < ApplicationController
 
   # GET /videos/:id
   def show
+    @video = Videody.find(params[:id])
     json_response(@video)
   end
 
   # POST /videos/concurso/:concurso_id
   def create
-    @concurso.videos.create!(video_params)
-    #puts :created
+    #@concurso.videos.create!(video_params)
+
+    @video = Videody.new(video_params)
+    @concurso.video.create(video_params)
+    @video.concurso = @concurso
+    @video.save
     json_response(@concurso.videos, :created)
   end
 
@@ -42,12 +47,11 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.permit(:nombre, :duracion, :nombre_concursante, :apellido_concursante, :correo_concursante, :mensaje_concursante, :fecha_carga, :video, :estado, :concurso_id)
-
+    params.permit(:nombre, :duracion, :nombre_concursante, :apellido_concursante, :correo_concursante, :mensaje_concursante, :fecha_carga, :video, :estado, :concurso_id).to_h
   end
 
   def set_concurso
-    @concurso = Concurso.find(params[:concurso_id])
+    @concurso = Concursody.find(params[:concurso_id])
   end
 
   def search_estado
@@ -55,6 +59,6 @@ class VideosController < ApplicationController
   end
 
   def set_concurso_video
-    @video = @concurso.videos.find_by!(id: params[:id]) if @concurso
+    @video = @concurso.videos.find(params[:id]) if @concurso
   end
 end

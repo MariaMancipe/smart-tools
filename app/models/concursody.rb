@@ -11,7 +11,7 @@ class Concursody
   field :picture
 
   belongs_to :usuario ,:class => Usuariody
-  #has_many :video ,:class => Videody
+  has_many :video ,:class => Videody
 
   field :created_at, :datetime, {default: ->(){Time.now}}
 

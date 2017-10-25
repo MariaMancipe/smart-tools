@@ -16,7 +16,7 @@ class Videody
   field :video_original
   field :video
 
-  #belongs_to :concurso ,:class => Consursody
+  belongs_to :concurso ,:class => Concursody
 
   field :created_at, :datetime, {default: ->(){Time.now}}
 

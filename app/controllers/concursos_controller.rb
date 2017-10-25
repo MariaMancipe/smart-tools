@@ -4,17 +4,20 @@ class ConcursosController < ApplicationController
   #before_action :set_usuario_concurso, only: [:showUsuario, :update, :destroy]
 
   # GET /concursos
+  #CHECK
   def index
     @concursos = Concursody.all
     json_response(@concursos)
   end
 
   #GET /concursos/usuario/:usuario_id
+  #CHECK
   def indexUsuario
     json_response(@usuario.concursos)
   end
 
   #GET /concursos/:id
+  #CHECK
   def show
     @concurso = Concursody.find(params[:id])
     json_response(@concurso)
@@ -30,6 +33,7 @@ class ConcursosController < ApplicationController
     @concurso = Concursody.new(concurso_params)
     @concurso.save
     @usuario.concursos.create(concurso_params)
+    @concurso.usuario = @usuario
     json_response(@usuario.concursos, :created)
   end
 
@@ -56,6 +60,6 @@ class ConcursosController < ApplicationController
   end
 
   def set_usuario_concurso
-    @concurso = @usuario.concursos.find_by!(id: params[:id]) if @usuario
+    @concurso = @usuario.concursos.find(params[:id]) if @usuario
   end
 end
