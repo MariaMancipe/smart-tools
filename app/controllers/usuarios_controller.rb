@@ -10,7 +10,9 @@ class UsuariosController < ApplicationController
 
   #POST /usuarios
   def create
+    print usuario_params.nombre
     @usuario = Usuariody.new(usuario_params)
+    @usuario.save
     json_response(@usuario, :created)
   end
 
