@@ -33,7 +33,7 @@ end
 
 def upload_video(path)
   obj = $s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_CONVERTED_FOLDER']+path}")
-  obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}", {:acl => :public_read})
+  obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}", {acl: "public_read"})
 
 end
 
@@ -42,4 +42,4 @@ def delete_files(upload,converted)
   File.delete(converted)
 end
 
-convert_to_mp4('Hola Colombia__9876543__.avi')
+convert_to_mp4('Video1__1509.0__.mp4')
