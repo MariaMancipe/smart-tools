@@ -79,22 +79,22 @@ def retrieve_message_from_converter
 end
 
 
-
-def send_message_to_converter_queue(mess)
+# Prueba de envio
+def send_message_to_converter_queue(mess, idVid, vidurl, usermail)
 	message_result = $sqs.send_message(
 		queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu', 
 		message_body: mess,
 		message_attributes: {
 	      "IDVid" => {
-	        string_value: "99",
+	        string_value: idVid,
 	        data_type: "String"
 	      },
 	      "URL" => {
-	        string_value: "path/vid.ext",
+	        string_value: vidurl,
 	        data_type: "String"
 	      },
 	      "Usermail" => {
-	        string_value: "jc.ortiz939@uniandes.edu.co",
+	        string_value: usermail,
 	        data_type: "String"
 	      }
     	}
@@ -141,4 +141,3 @@ end
 
 
 retrieve_message_from_converter
-#send_message_to_converter_queue('Escenario de prueba')

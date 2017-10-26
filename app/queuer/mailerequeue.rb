@@ -44,9 +44,9 @@ class MailerQueuer < ActionMailer::Base
 			video_ready(usermail).deliver
 
 			# Conexion a la base de datos para actualizar el estado del video
-			connect = Mysql2::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}", :port => 3306)
-	  		connect.query(create_query_mailed(IDVid))
-			connect.close
+			#connect = Mysql2::Client.new(:host => "#{ENV['SMART_TOOLS_DB_HOST']}", :username => "#{ENV['SMART_TOOLS_DB_USER']}", :password => "#{ENV['SMART_TOOLS_DB_PASSWD']}", :database => "#{ENV['SMART_TOOLS_DB_NAME']}", :port => 3306)
+	  		#connect.query(create_query_mailed(IDVid))
+			#connect.close
 	  		
 			# Delete the message from the queue.
 			$sqs.delete_message({
