@@ -25,7 +25,7 @@ CarrierWave.configure do |config|
       endpoint: 'https://s3.amazonaws.com'
   }
   config.fog_directory = ENV['S3_BUCKET']
-  config.fog_public = false
+  config.fog_public = true
   config.storage = :fog
 
 end
