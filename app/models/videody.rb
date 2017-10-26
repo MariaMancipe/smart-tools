@@ -20,6 +20,9 @@ class Videody
 
   belongs_to :concurso ,:class => Concursody
 
+  after_save :send_to_queue
 
-
+  def send_to_queue
+    UploaderQueuer::send_message_to_converter_queue('New video uploaded!', self.id, self.video_original, self.correo_concursante)
+  end
 end
