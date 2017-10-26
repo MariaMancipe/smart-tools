@@ -51,7 +51,8 @@ class VideosController < ApplicationController
   private
 
   def upload_video
-    @relacional.videos.create!(video_params)
+    @relacional = @concurso_relacional.videos.new(video_params)
+    puts
   end
 
   def video_params
@@ -60,7 +61,7 @@ class VideosController < ApplicationController
 
   def set_concurso
     @concurso = Concursody.find(params[:concurso_id])
-    @relacional = Concurso.find(params[:concurso_id])
+    @concurso_relacional= Concurso.find(params[:concurso_id])
   end
 
   def search_estado
