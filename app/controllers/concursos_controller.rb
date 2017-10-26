@@ -58,6 +58,7 @@ class ConcursosController < ApplicationController
   def upload_image
     @usuario_relacional = Usuario.find(1)
     @relacional = @usuario_relacional.concursos.new(concurso_params)
+    @relacional.save
     puts "ESTE ES EL ID"
     puts @relacional.id
   end
