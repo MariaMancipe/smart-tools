@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b413fa86-55ce-420d-87cf-dd420fed3082" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/videos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/videos_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/video.rb" afterPath="$PROJECT_DIR$/app/models/video.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/queuer/converterqueue.rb" afterPath="$PROJECT_DIR$/app/queuer/converterqueue.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/s3.rb" afterPath="$PROJECT_DIR$/lib/s3.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -66,7 +65,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="video.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="video.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/video.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
@@ -96,16 +95,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadqueuer.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/queuer/uploadqueuer.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="81" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="carrierwave.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/initializers/carrierwave.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,11 +105,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="converterqueue.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="converterqueue.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/queuer/converterqueue.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            <state relative-caret-position="483">
+              <caret line="131" column="40" lean-forward="true" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="video_converter.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/video_converter.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="s3.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/s3.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -165,7 +174,6 @@
         <option value="$PROJECT_DIR$/db/migrate/20170921152433_create_videos.rb" />
         <option value="$PROJECT_DIR$/app/uploaders/picture_uploader.rb" />
         <option value="$PROJECT_DIR$/app/uploaders/video_uploader.rb" />
-        <option value="$PROJECT_DIR$/lib/s3.rb" />
         <option value="$PROJECT_DIR$/config/initializers/dynamodb.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/create_tables.rake" />
         <option value="$PROJECT_DIR$/config/secrets.yml" />
@@ -179,7 +187,6 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/concursos_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/queuer/converterqueue.rb" />
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/app/controllers/usuarios_controller.rb" />
         <option value="$PROJECT_DIR$/app/queuer/mailerequeue.rb" />
@@ -187,6 +194,8 @@
         <option value="$PROJECT_DIR$/config/initializers/carrierwave.rb" />
         <option value="$PROJECT_DIR$/app/controllers/videos_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/video.rb" />
+        <option value="$PROJECT_DIR$/app/queuer/converterqueue.rb" />
+        <option value="$PROJECT_DIR$/lib/s3.rb" />
       </list>
     </option>
   </component>
@@ -231,30 +240,12 @@
             <path>
               <item name="smart-tools" type="b2602c69:ProjectViewProjectNode" />
               <item name="smart-tools" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="smart-tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="smart-tools" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="queuer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="smart-tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="smart-tools" type="462c0819:PsiDirectoryNode" />
               <item name="bin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="smart-tools" type="b2602c69:ProjectViewProjectNode" />
               <item name="smart-tools" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="smart-tools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="smart-tools" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="initializers" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -401,12 +392,12 @@
       <workItem from="1508962040423" duration="1975000" />
       <workItem from="1508981201153" duration="10773000" />
       <workItem from="1508996861574" duration="278000" />
-      <workItem from="1509031340940" duration="5336000" />
+      <workItem from="1509031340940" duration="6423000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97236000" />
+    <option name="totallyTimeSpent" value="98323000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -611,20 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/s3.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/video_converter.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/create_tables.rake">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -744,22 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/queuer/converterqueue.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/queuer/mailerequeue.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/application_controller_renderer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -836,6 +797,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/queuer/mailerequeue.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/video_converter.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/s3.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/queuer/converterqueue.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="131" column="40" lean-forward="true" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
           <folding />
         </state>
       </provider>

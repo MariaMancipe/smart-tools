@@ -120,7 +120,7 @@ def convert_to_mp4(path)
 	movie.transcode("#{new_path}.mp4", %w(-acodec aac -vcodec h264 -strict -2 -threads 10 -threads 10))
 	upload_video("#{basename}.mp4")
 	delete_files("#{ENV['VIDEO_UPLOAD']+path}","#{new_path}.mp4")
-	new_path = '';
+	new_path = "http://s3.amazonaws.com/smart-tools/uploads/videos/converted/#{basename}.mp4"
 	return new_path
 end
 
