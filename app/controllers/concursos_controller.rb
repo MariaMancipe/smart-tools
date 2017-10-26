@@ -1,6 +1,6 @@
 class ConcursosController < ApplicationController
 
-  before_action :set_usuario, only: [:indexUsuario, :showUsuario, :create, :update, :destroy]
+  before_action :set_usuario, only: [:indexUsuario, :showUsuario, :create]
   #before_action :set_usuario_concurso, only: [:showUsuario, :update, :destroy]
 
   # GET /concursos
