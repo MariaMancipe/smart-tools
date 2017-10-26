@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/concursos/:id' => 'concursos#show'
   get '/concursos/usuario/:usuario_id/:id' => 'concursos#showUsuario'
   post '/concursos/usuario/:usuario_id' => 'concursos#create'
-  patch '/concursos/usuario/:usuario_id/:id' => 'concursos#update'
+  put '/concursos/usuario/:usuario_id/:id' => 'concursos#update'
   delete '/concursos/usuario/:usuario_id/:id' => 'concursos#destroy'
 
 
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/videos' => 'videos#all'
   get '/videos/:id' => 'videos#show'
   get '/videos/concurso/:concurso_id' => 'videos#index'
-  patch '/videos/:id' => 'videos#update'
+  put '/videos/:id' => 'videos#update'
   post '/videos/concurso/:concurso_id'=>'videos#create'
   get '/videos/:concurso_id/estado/:estado' => 'videos#estado'
 end

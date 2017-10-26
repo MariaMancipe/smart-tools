@@ -37,6 +37,7 @@ class UsuariosController < ApplicationController
 
   #DELETE /usuarios/:id
   def destroy
+    @usuario = Usuariody.find(params[:id])
     @usuario.destroy
     head :no_content
   end
