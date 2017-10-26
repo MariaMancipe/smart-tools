@@ -24,7 +24,6 @@ class VideosController < ApplicationController
 
   # POST /videos/concurso/:concurso_id
   def create
-    #@concurso.videos.create!(video_params)
     upload_video
     @video = Videody.new(:nombre => @relacional.nombre ,:duracion => @relacional.duracion ,:nombre_concursante=> @relacional.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video)
     @video.save
@@ -52,7 +51,7 @@ class VideosController < ApplicationController
 
   def upload_video
     @relacional = @concurso_relacional.videos.new(video_params)
-    puts
+    @relacional.save
   end
 
   def video_params

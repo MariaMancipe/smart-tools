@@ -59,8 +59,6 @@ class ConcursosController < ApplicationController
     @usuario_relacional = Usuario.find(1)
     @relacional = @usuario_relacional.concursos.new(concurso_params)
     @relacional.save
-    puts "ESTE ES EL ID"
-    puts @relacional.id
   end
 
   def concurso_params
