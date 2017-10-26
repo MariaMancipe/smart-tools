@@ -31,9 +31,9 @@ class ConcursosController < ApplicationController
   #POST /concursos/usuario/:usuario_id
   def create
     upload_image
-    @concurso = Concursody.new(concurso_params)
+    @concurso = Concursody.new(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
     @concurso.save
-    @usuario.concursos.create(concurso_params)
+    @usuario.concursos.create(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
     @concurso.usuario = @usuario
     json_response(@usuario.concursos, :created)
   end
@@ -56,9 +56,10 @@ class ConcursosController < ApplicationController
   private
 
   def upload_image
-    puts "Entra al upload image"
     @usuario_relacional = Usuario.find(1)
-    @usuario_relacional.concursos.create!(concurso_params)
+    @relacional = @usuario_relacional.concursos.new(concurso_params)
+    puts "ESTE ES EL ID"
+    puts @relacional.id
   end
 
   def concurso_params
