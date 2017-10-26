@@ -15,6 +15,5 @@ class Concursody
 
   field :created_at, :datetime, {default: ->(){Time.now}}
 
-  mount_uploader :picture, PictureUploader
 
 end
