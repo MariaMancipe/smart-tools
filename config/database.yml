@@ -26,8 +26,8 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV["SMART_TOOLS_DB_NAME"] %>
-  host: <%= ENV["SMART_TOOLS_DB_HOST"] %>
-  username: <%= ENV["SMART_TOOLS_DB_USER"] %>
-  password: <%= ENV["SMART_TOOLS_DB_PASSWD"] %>
-  port: <%= ENV["SMART_TOOLS_DB_PORT"] %>
+  database: <%= ENV["SMART_TOOLS_DYNAMO_DB_NAME"] %>
+  host: <%= ENV["SMART_TOOLS_DYNAMO_DB_HOST"] %>
+  username: <%= ENV["SMART_TOOLS_DYNAMO_DB_USER"] %>
+  password: <%= ENV["SMART_TOOLS_DYNAMO_DB_PASSWD"] %>
+  port: <%= ENV["SMART_TOOLS_DYNAMO_DB_PORT"] %>
