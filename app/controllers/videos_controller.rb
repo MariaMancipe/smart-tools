@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_concurso
+  before_action :set_concurso, only: [:index, :create]
   #before_action :set_concurso_video, only: [:show, :update, :destroy]
 
   # GET /videos
@@ -52,7 +52,7 @@ class VideosController < ApplicationController
   end
 
   def set_concurso
-    @concurso = Concursody.find(params[:concurso_id])
+    @concurso = Concursody.find(params[:id])
   end
 
   def search_estado
