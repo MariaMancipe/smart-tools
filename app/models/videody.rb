@@ -7,7 +7,7 @@ class Videody
   field :nombre
   field :duracion
   field :fecha_carga
-  field :estado
+  field :estado, {default: 0}
   field :nombre_concursante
   field :apellido_concursante
   field :correo_concursante
@@ -15,11 +15,11 @@ class Videody
   field :video_convertido
   field :video_original
   field :video
-
+  field :created_at, :datetime, {default: ->(){Time.now}}
 
 
   belongs_to :concurso ,:class => Concursody
 
-  field :created_at, :datetime, {default: ->(){Time.now}}
+
 
 end

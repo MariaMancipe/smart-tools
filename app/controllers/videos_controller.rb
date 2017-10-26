@@ -3,17 +3,20 @@ class VideosController < ApplicationController
   #before_action :set_concurso_video, only: [:show, :update, :destroy]
 
   # GET /videos
+  #CHECK
   def all
     @videos = Videody.all
     json_response(@videos)
   end
 
-  # GET /videos/byConcurso/:concurso_id
+  # GET /videos/concurso/:concurso_id
+  #CHECK
   def index
     json_response(@concurso.videos)
   end
 
   # GET /videos/:id
+  #CHECK
   def show
     @video = Videody.find(params[:id])
     json_response(@video)
@@ -52,7 +55,7 @@ class VideosController < ApplicationController
   end
 
   def set_concurso
-    @concurso = Concursody.find(params[:id])
+    @concurso = Concursody.find(params[:concurso_id])
   end
 
   def search_estado

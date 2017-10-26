@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   get '/videos' => 'videos#all'
   get '/videos/:id' => 'videos#show'
-  get '/videos/concurso/:id' => 'videos#index'
-  post '/videos/concurso/:id'=>'videos#create'
+  get '/videos/concurso/:concurso_id' => 'videos#index'
+  post '/videos/concurso/:concurso_id'=>'videos#create'
   get '/videos/:concurso_id/estado/:estado' => 'videos#estado'
 end
