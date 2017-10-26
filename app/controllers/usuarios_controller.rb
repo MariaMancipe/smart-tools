@@ -32,7 +32,7 @@ class UsuariosController < ApplicationController
   def update
     @usuario = Usuariody.find(params[:id])
     @usuario.update_attributes(usuario_params)
-    head :no_content
+    json_response(@usuario)
   end
 
   #DELETE /usuarios/:id

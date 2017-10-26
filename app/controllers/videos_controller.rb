@@ -34,11 +34,11 @@ class VideosController < ApplicationController
     json_response(@concurso.videos, :created)
   end
 
-  # PUT /concursos/:concurso_id/videos/:id
+  # PUT /videos/:id
   def update
     @video = Videody.find(params[:id])
     @video.update_attributes(video_params)
-    head :no_content
+    json_response(@video)
   end
 
   #GET /videos/:concurso_id/estado/:estado

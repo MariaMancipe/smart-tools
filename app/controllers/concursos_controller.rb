@@ -34,14 +34,15 @@ class ConcursosController < ApplicationController
     @concurso.save
     @usuario.concursos.create(concurso_params)
     @concurso.usuario = @usuario
+    self.update
     json_response(@usuario.concursos, :created)
   end
 
-  #UPDATE /concursos/usuario/:usuario_id/:id
+  #UPDATE /concursos/:id
   def update
     @concurso = Concursody.find(params[:id])
     @concurso.update_attributes(concurso_params)
-    head :no_content
+    json_response(@concurso)
   end
 
   #DELETE /concursos/usuario/:usuario_id/:id
