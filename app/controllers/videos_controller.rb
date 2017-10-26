@@ -36,7 +36,8 @@ class VideosController < ApplicationController
 
   # PUT /concursos/:concurso_id/videos/:id
   def update
-    @video.update(video_params)
+    @video = Videody.find(params[:id])
+    @video.update_attributes(video_params)
     head :no_content
   end
 

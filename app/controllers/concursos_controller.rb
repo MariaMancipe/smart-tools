@@ -39,12 +39,14 @@ class ConcursosController < ApplicationController
 
   #UPDATE /concursos/usuario/:usuario_id/:id
   def update
-    @concurso.update(concurso_params)
+    @concurso = Concursody.find(params[:id])
+    @concurso.update_attributes(concurso_params)
     head :no_content
   end
 
   #DELETE /concursos/usuario/:usuario_id/:id
   def destroy
+    @concurso = Concursody.find(params[:id])
     @concurso.destroy
     head :no_content
   end

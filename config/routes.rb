@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/videos' => 'videos#all'
   get '/videos/:id' => 'videos#show'
   get '/videos/concurso/:concurso_id' => 'videos#index'
+  patch '/videos/:id' => 'videos#update'
   post '/videos/concurso/:concurso_id'=>'videos#create'
   get '/videos/:concurso_id/estado/:estado' => 'videos#estado'
 end
