@@ -34,7 +34,6 @@ class ConcursosController < ApplicationController
     @concurso.save
     @usuario.concursos.create(concurso_params)
     @concurso.usuario = @usuario
-    self.update
     json_response(@usuario.concursos, :created)
   end
 
