@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/concursos/usuario/:usuario_id/:id' => 'concursos#showUsuario'
   post '/concursos/usuario/:usuario_id' => 'concursos#create'
   put '/concursos/:id' => 'concursos#update'
-  delete '/concursos/usuario/:usuario_id/:id' => 'concursos#destroy'
+  delete '/concursos/:id' => 'concursos#destroy'
 
 
   #VIDEO

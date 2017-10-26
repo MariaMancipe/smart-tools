@@ -41,6 +41,7 @@ class ConcursosController < ApplicationController
   def update
     @concurso = Concursody.find(params[:id])
     @concurso.update_attributes(concurso_params)
+    upload_image
     json_response(@concurso)
   end
 
@@ -52,6 +53,11 @@ class ConcursosController < ApplicationController
   end
 
   private
+
+  def upload_image
+    @usuario = Usuariody.find(1)
+    @usuario.concursos.create!(concurso_params)
+  end
 
   def concurso_params
     params.permit(:nombre, :fecha_inicio, :fecha_fin, :url, :descripcion, :usuario_id, :picture).to_h

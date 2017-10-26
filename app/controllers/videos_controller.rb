@@ -30,7 +30,7 @@ class VideosController < ApplicationController
     @video.save
     @concurso.videos.create(video_params)
     @video.concurso = @concurso
-
+    upload_video
     json_response(@concurso.videos, :created)
   end
 
@@ -51,12 +51,17 @@ class VideosController < ApplicationController
 
   private
 
+  def upload_video
+    @concurso_relacional.videos.create!(video_params)
+  end
+
   def video_params
     params.permit(:nombre, :duracion, :nombre_concursante, :apellido_concursante, :correo_concursante, :mensaje_concursante, :fecha_carga, :video, :estado, :concurso_id).to_h
   end
 
   def set_concurso
     @concurso = Concursody.find(params[:concurso_id])
+    @concurso_relacional = Concurso.find(params[:concurso_id])
   end
 
   def search_estado
