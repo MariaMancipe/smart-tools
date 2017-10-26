@@ -4,7 +4,7 @@ class UploaderQueuer
 	
 	# Prueba de envio
 	def self.send_message_to_converter_queue(mess, idVid, vidurl, usermail)
-		sqs = Aws::SQS::Client.new(
+		sqs = Aws::SQS::Resource.new(
 			region: 'us-east-1',
 			access_key_id: ENV['AWS_ACCESS_KEY_ID'],
 			secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
