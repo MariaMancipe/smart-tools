@@ -136,7 +136,7 @@ class ConverterQueuer
 			obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}")
 
 		end
-		#retrieve_message_from_converter
+		retrieve_message_from_converter
 	end
 end
 

@@ -54,6 +54,6 @@ class MailerQueuer < ApplicationMailer
 		end
 	end
 
-	#retrieve_message_from_mailer
+	retrieve_message_from_mailer
 
 end
