@@ -42,4 +42,4 @@ def delete_files(upload,converted)
   File.delete(converted)
 end
 
-convert_to_mp4('Hola Colombia__9876543__.avi')
+convert_to_mp4('Video1__1509.0__.mp4')
