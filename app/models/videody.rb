@@ -23,6 +23,8 @@ class Videody
   after_save :send_to_queue
 
   def send_to_queue
-    UploaderQueuer::send_message_to_converter_queue('New video uploaded!', self.id, self.video_original, self.correo_concursante)
+    puts 'ID del video'
+    puts self.video
+    UploaderQueuer::send_message_to_converter_queue('New video uploaded!', self.id, self.video, self.correo_concursante)
   end
 end
