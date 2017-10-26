@@ -10,7 +10,7 @@ class UploaderQueuer
 			secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 		)
 		message_result = sqs.send_message(
-			queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu', 
+			queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueue',
 			message_body: mess,
 			message_attributes: {
 		      "IDVid" => {
