@@ -26,9 +26,9 @@ class VideosController < ApplicationController
   def create
     #@concurso.videos.create!(video_params)
     upload_video
-    @video = Videody.new(video_params)
+    @video = Videody.new(:nombre => @relacional.nombre, :duracion => @relacional.duracion, :nombre_concursante=> @relacion.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video)
     @video.save
-    @concurso.videos.create(video_params)
+    @concurso.videos.create(:nombre => @relacional.nombre, :duracion => @relacional.duracion, :nombre_concursante=> @relacion.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video)
     @video.concurso = @concurso
     json_response(@concurso.videos, :created)
   end
@@ -51,7 +51,7 @@ class VideosController < ApplicationController
   private
 
   def upload_video
-    @concurso_relacional.videos.create!(video_params)
+    @relacional.videos.create!(video_params)
   end
 
   def video_params
@@ -60,7 +60,7 @@ class VideosController < ApplicationController
 
   def set_concurso
     @concurso = Concursody.find(params[:concurso_id])
-    @concurso_relacional = Concurso.find(params[:concurso_id])
+    @relacional = Concurso.find(params[:concurso_id])
   end
 
   def search_estado
