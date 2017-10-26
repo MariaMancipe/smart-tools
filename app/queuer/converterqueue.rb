@@ -5,26 +5,24 @@ require 'mysql2'
 require 'aws-sdk'
 
 class ConverterQueuer 
-	class << self
-
-		$sqs = Aws::SQS::Client.new(
-			region: 'us-east-1',
-			access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-			secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-		)
 
 		#Crea query para actualizar estado de 0 (por convertir) a 1 (convertido)
-		def create_query_converted(idVid, url)
+		def self.create_query_converted(idVid, url)
 			return "UPDATE videos SET estado=1, video_convertido=\'#{url}\' WHERE id=\'#{idVid}"
 		end
 
 		#Crea query para actualizar estado de 1 (convertido) a 2 (mail enviado)
-		def create_query_mailed(f)
+		def self.create_query_mailed(f)
 		end
 
 		#Despues de la conversion, agrega un mensaje a la cola del mailer para que sea entregado.
-		def push_messages_mailer(idvid, mail)
-			message_result = $sqs.send_message(
+		def self.push_messages_mailer(idvid, mail)
+			sqs = Aws::SQS::Client.new(
+				region: 'us-east-1',
+				access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+				secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+			)
+			message_result = sqs.send_message(
 				queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/MailerQueue', 
 				message_body: 'Mail',
 				message_attributes: {
@@ -42,8 +40,13 @@ class ConverterQueuer
 		end
 
 		#Recupera los mensajes de la cola converter para iniciar la conversión de videos
-		def retrieve_message_from_converter
-			receive_message_result = $sqs.receive_message({
+		def self.retrieve_message_from_converter
+			sqs = Aws::SQS::Client.new(
+				region: 'us-east-1',
+				access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+				secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+			)
+			receive_message_result = sqs.receive_message({
 			  queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu', 
 			  message_attribute_names: ["All"], # Receive all custom attributes.
 			  max_number_of_messages: 1, # Receive at most one message.
@@ -74,7 +77,7 @@ class ConverterQueuer
 		  		push_messages_mailer(idVid, usermail)
 		  		
 				# Delete the message from the queue.
-				$sqs.delete_message({
+				sqs.delete_message({
 				  queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu',
 				  receipt_handle: message.receipt_handle    
 				})
@@ -84,7 +87,12 @@ class ConverterQueuer
 
 		# Prueba de envio
 		def send_message_to_converter_queue(mess, idVid, vidurl, usermail)
-			message_result = $sqs.send_message(
+			sqs = Aws::SQS::Client.new(
+				region: 'us-east-1',
+				access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+				secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+			)
+			message_result = sqs.send_message(
 				queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu', 
 				message_body: mess,
 				message_attributes: {
@@ -107,13 +115,7 @@ class ConverterQueuer
 
 		#--------------------------- VIDEO CONVERTER-UPLOADER-DOWNLOADER -------------------------------
 
-		$s3 = Aws::S3::Resource.new(
-				region: ENV['S3_REGION'],
-				access_key_id: ENV['ACCESS_KEY_ID'],
-				secret_access_key: ENV['SECRET_ACCESS_KEY']
-		)
-
-		def convert_to_mp4(path)
+		def self.convert_to_mp4(path)
 			puts "convert to mp4 #{ENV['VIDEO_UPLOAD']+path}"
 			Dir.mkdir("#{ENV['VIDEO_UPLOAD']}") unless File.exist?("#{ENV['VIDEO_UPLOAD']}")
 			Dir.mkdir("#{ENV['VIDEO_CONVERTED']}") unless File.exist?("#{ENV['VIDEO_CONVERTED']}")
@@ -127,16 +129,25 @@ class ConverterQueuer
 			return new_path
 		end
 
-		def download_video(path)
-			$s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_UPLOADS_FOLDER']+path}").get(response_target: "#{ENV['VIDEO_UPLOAD']+path}")
+		def self.download_video(path)
+			s3 = Aws::S3::Resource.new(
+				region: ENV['S3_REGION'],
+				access_key_id: ENV['ACCESS_KEY_ID'],
+				secret_access_key: ENV['SECRET_ACCESS_KEY']
+			)
+			s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_UPLOADS_FOLDER']+path}").get(response_target: "#{ENV['VIDEO_UPLOAD']+path}")
 		end
 
 		def upload_video(path)
-			obj = $s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_CONVERTED_FOLDER']+path}")
+			s3 = Aws::S3::Resource.new(
+				region: ENV['S3_REGION'],
+				access_key_id: ENV['ACCESS_KEY_ID'],
+				secret_access_key: ENV['SECRET_ACCESS_KEY']
+			)
+			obj = s3.bucket(ENV['S3_BUCKET']).object("#{ENV['S3_CONVERTED_FOLDER']+path}")
 			obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}")
 
 		end
-		retrieve_message_from_converter
-	end
+		self.retrieve_message_from_converter
 end
 
