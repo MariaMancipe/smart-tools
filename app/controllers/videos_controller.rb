@@ -25,12 +25,11 @@ class VideosController < ApplicationController
   # POST /videos/concurso/:concurso_id
   def create
     #@concurso.videos.create!(video_params)
-
+    upload_video
     @video = Videody.new(video_params)
     @video.save
     @concurso.videos.create(video_params)
     @video.concurso = @concurso
-    upload_video
     json_response(@concurso.videos, :created)
   end
 
