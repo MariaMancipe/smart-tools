@@ -1,4 +1,4 @@
-require 'aws-sdk-sqs'
+require 'aws-sdk'
 
 class UploaderQueuer
 	

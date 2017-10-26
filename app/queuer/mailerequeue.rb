@@ -1,4 +1,4 @@
-require 'aws-sdk-sqs'  # v2: require 'aws-sdk'
+require 'aws-sdk'  # v2: require 'aws-sdk'
 require 'fileutils'
 require 'streamio-ffmpeg'
 require 'mysql2'
