@@ -19,11 +19,11 @@
 #job_type :runner, "cd :path && rvm 2.0.0 do bundle exec script/rails runner -e :environment ':task' :output"
 
 every 2.minutes do
-  rake "cron:deliver_email"
+  rake "cron:deliver_email_queu"
 end
 
 every 5.minutes do
-  rake "cron:convert_video"
+  rake "cron:conver_videos_queue"
 end
 
 #every 2.minutes do

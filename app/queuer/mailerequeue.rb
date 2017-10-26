@@ -3,16 +3,9 @@ require 'fileutils'
 require 'streamio-ffmpeg'
 require 'mysql2'
 
-class MailerQueuer < ActionMailer::Base
-
-	$sqs = Aws::SQS::Resource.new(
-		region: 'us-east-1',
-		access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-		secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-	)
-
+class MailerQueuer < ApplicationMailer
 	#Crea query para actualizar estado de 1 (convertido) a 2 (mail enviado)
-	def create_query_mailed(idVid)
+	def self.create_query_mailed(idVid)
 		return "UPDATE videos SET estado=2 WHERE id=\'#{idVid}"
 	end
 
@@ -23,14 +16,19 @@ class MailerQueuer < ActionMailer::Base
 	end
 
 	#Recupera los mensajes de la cola converter para iniciar la conversión de videos
-	def retrieve_message_from_mailer
-		receive_message_result = $sqs.receive_message({
+	def self.retrieve_message_from_mailer
+		sqs = Aws::SQS::Client.new(
+			region: 'us-east-1',
+			access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+			secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+		)
+		receive_message_result = sqs.receive_message({
 		  queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/MailerQueue', 
 		  message_attribute_names: ["All"], # Receive all custom attributes.
 		  max_number_of_messages: 1, # Receive at most one message.
 		  wait_time_seconds: 0 # Do not wait to check for the message.
 		})
-		#puts receive_message_result.body
+		puts receive_message_result.body
 		# Display information about the message.
 		# Display the message's body and each custom attribute value.
 		receive_message_result.messages.each do |message|
@@ -49,13 +47,13 @@ class MailerQueuer < ActionMailer::Base
 			#connect.close
 	  		
 			# Delete the message from the queue.
-			$sqs.delete_message({
+			sqs.delete_message({
 			  queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/MailerQueue',
 			  receipt_handle: message.receipt_handle    
 			})
 		end
 	end
 
-	retrieve_message_from_mailer
+	#retrieve_message_from_mailer
 
 end
