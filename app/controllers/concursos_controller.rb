@@ -55,8 +55,8 @@ class ConcursosController < ApplicationController
   private
 
   def upload_image
-    @usuario = Usuariody.find(1)
-    @usuario.concursos.create!(concurso_params)
+    @usuario_relacional = Usuario.find(1)
+    @usuario_relacional.concursos.create!(concurso_params)
   end
 
   def concurso_params
