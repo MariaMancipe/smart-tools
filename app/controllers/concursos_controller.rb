@@ -30,11 +30,17 @@ class ConcursosController < ApplicationController
 
   #POST /concursos/usuario/:usuario_id
   def create
-    upload_image
-    @concurso = Concursody.new(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
+    # upload_image
+    # @concurso = Concursody.new(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
+    # @concurso.save
+    # @usuario.concursos.create(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
+    # @concurso.usuario = @usuario
+
+    @concurso = Concursody.new(concurso_params)
     @concurso.save
-    @usuario.concursos.create(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
-    @concurso.usuario = @usuario
+    @usuario.concursos.create(concurso_params)
+    PictureUploader uploader = PictureUploader.new
+    uploader.store!(@concurso.picture.file)
     json_response(@usuario.concursos, :created)
   end
 

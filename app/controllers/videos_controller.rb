@@ -24,11 +24,16 @@ class VideosController < ApplicationController
 
   # POST /videos/concurso/:concurso_id
   def create
-    upload_video
-    @video = Videody.new(:nombre => @relacional.nombre ,:duracion => @relacional.duracion ,:nombre_concursante=> @relacional.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video, :video_original => @relacional.video_original)
+    # upload_video
+    # @video = Videody.new(:nombre => @relacional.nombre ,:duracion => @relacional.duracion ,:nombre_concursante=> @relacional.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video, :video_original => @relacional.video_original)
+    # @video.save
+    # @concurso.videos.create(:nombre => @relacional.nombre ,:duracion => @relacional.duracion ,:nombre_concursante=> @relacional.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video)
+    # @video.concurso = @concurso
+    @video = Videody.new(video_params)
     @video.save
-    @concurso.videos.create(:nombre => @relacional.nombre ,:duracion => @relacional.duracion ,:nombre_concursante=> @relacional.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video)
-    @video.concurso = @concurso
+    @concurso.videos.create(video_params)
+    VideoUploader uploader = VideoUploader.new
+    uploader.store!(@video.video.file)
     json_response(@concurso.videos, :created)
   end
 
