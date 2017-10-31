@@ -33,7 +33,7 @@ class VideosController < ApplicationController
     @video.save
     @concurso.videos.create(video_params)
     uploader = VideoUploader.new
-    uploader.store!(@video.video.file)
+    uploader.store!(@video.video.tempfile)
     json_response(@concurso.videos, :created)
   end
 
