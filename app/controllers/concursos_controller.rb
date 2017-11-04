@@ -36,9 +36,10 @@ class ConcursosController < ApplicationController
     # @usuario.concursos.create(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
     # @concurso.usuario = @usuario
 
-    @concurso = Concursody.new(concurso_params)
     uploader = PictureUploader.new
-    uploader.store!(@concurso.picture.file)
+    uploader.store!(concurso_params.file)
+    @concurso = Concursody.new(concurso_params)
+
     @concurso.save
     @usuario.concursos.create(concurso_params)
 
