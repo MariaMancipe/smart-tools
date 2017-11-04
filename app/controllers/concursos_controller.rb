@@ -39,7 +39,7 @@ class ConcursosController < ApplicationController
     puts concurso_params
     @concurso = Concursody.new(concurso_params)
     uploader = PictureUploader.new
-    uploader.store!(concurso_params.file)
+    uploader.store!(@concurso.picture.tempfile)
     @concurso.save
     @usuario.concursos.create(concurso_params)
 
