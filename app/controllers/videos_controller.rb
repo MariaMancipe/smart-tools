@@ -62,7 +62,7 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.permit(:nombre, :duracion, :nombre_concursante, :apellido_concursante, :correo_concursante, :mensaje_concursante, :fecha_carga, :video, :estado, :concurso_id)
+    params.permit(:nombre, :duracion, :nombre_concursante, :apellido_concursante, :correo_concursante, :mensaje_concursante, :fecha_carga, :video, :estado, :concurso_id).to_h
   end
 
   def set_concurso
