@@ -31,8 +31,8 @@ class VideosController < ApplicationController
     # @video.concurso = @concurso
 
     @video = Videody.new(video_params)
-    uploader = VideoUploader.new
-    uploader.store!(@video.video.file)
+    # uploader = VideoUploader.new
+    # uploader.store!(@video.video.file)
     @video.save
     @concurso.videos.create(video_params)
 
