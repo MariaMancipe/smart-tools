@@ -38,9 +38,10 @@ class ConcursosController < ApplicationController
 
     puts concurso_params
     @concurso = Concursody.new(concurso_params)
-    uploader = PictureUploader.new
-    uploader.store!(@concurso.picture)
-    @concurso.save
+    if @concurso.save
+      uploader = PictureUploader.new
+      uploader.store!(@concurso.picture)
+    end
     @usuario.concursos.create(concurso_params)
 
     json_response(@usuario.concursos, :created)
