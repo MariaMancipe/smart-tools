@@ -29,11 +29,13 @@ class VideosController < ApplicationController
     # @video.save
     # @concurso.videos.create(:nombre => @relacional.nombre ,:duracion => @relacional.duracion ,:nombre_concursante=> @relacional.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video)
     # @video.concurso = @concurso
+
     @video = Videody.new(video_params)
+    uploader = VideoUploader.new
+    uploader.store!(@video.video.file)
     @video.save
     @concurso.videos.create(video_params)
-    # uploader = VideoUploader.new
-    # uploader.store!(@video.video.tempfile)
+
     json_response(@concurso.videos, :created)
   end
 
