@@ -36,11 +36,12 @@ class ConcursosController < ApplicationController
     # @usuario.concursos.create(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
     # @concurso.usuario = @usuario
 
-    uploader = PictureUploader.new
-    uploader.store!(concurso_params.file)
-    @concurso = Concursody.new(concurso_params)
 
-    @concurso.save
+    @concurso = Concursody.new(concurso_params)
+    if @concurso.save
+      uploader = PictureUploader.new
+      uploader.store!(concurso_params.file)
+    end
     @usuario.concursos.create(concurso_params)
 
     json_response(@usuario.concursos, :created)
