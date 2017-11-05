@@ -41,8 +41,8 @@ class ConcursosController < ApplicationController
     # puts concurso_params[:picture].path
     uploader = PictureUploader.new
     picture = File.new(concurso_params[:picture].path)
-    puts picture.dirname
-    uploader.store!(picture)
+    dirname = File.dirname(concurso_params[:picture].path)
+    uploader.store!(concurso_params[:picture].file)
     @concurso.save
     @usuario.concursos.create(concurso_params)
     json_response(@usuario.concursos, :created)
