@@ -37,7 +37,7 @@ class ConcursosController < ApplicationController
     # @concurso.usuario = @usuario
 
     @concurso = Concursody.new(concurso_params)
-    puts @concurso.picture.path
+    puts @concurso.picture.pathmap
     uploader = PictureUploader.new
     uploader.store!(@concurso.picture)
     @concurso.save
