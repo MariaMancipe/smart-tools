@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_concurso, only: [:index]
+  before_action :set_concurso, only: [:index, :create]
   #before_action :set_concurso_video, only: [:show, :update, :destroy]
 
   # GET /videos
