@@ -36,16 +36,18 @@ class ConcursosController < ApplicationController
     # @usuario.concursos.create(:nombre => @relacional.nombre, :fecha_inicio =>  @relacional.fecha_inicio, :fecha_fin => @relacional.fecha_fin, :descripcion => @relacional.descripcion, :picture => @relacional.picture)
     # @concurso.usuario = @usuario
 
-    puts concurso_params.tempfile
-    @concurso = Concursody.new(concurso_params)
-    uploader = PictureUploader.new
-    puts "Esto es concruso.picture"
-    puts @concurso.picture
-    puts @tempfile
-    @concurso.save
-    uploader.store!(@concurso.picture)
-    @usuario.concursos.create(concurso_params)
-    json_response(@usuario.concursos, :created)
+    puts concurso_params
+    @concursoRelacional = Concurso.new(concurso_params)
+    puts @concursoRelacional.picture.path
+    # @concurso = Concursody.new(concurso_params)
+    # uploader = PictureUploader.new
+    # puts "Esto es concruso.picture"
+    # puts @concurso.picture
+    # puts @tempfile
+    # @concurso.save
+    # uploader.store!(@concurso.picture)
+    # @usuario.concursos.create(concurso_params)
+    # json_response(@usuario.concursos, :created)
   end
 
   #UPDATE /concursos/:id
