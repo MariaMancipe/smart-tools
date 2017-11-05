@@ -34,7 +34,7 @@ class VideosController < ApplicationController
     # uploader = VideoUploader.new
     # uploader.store!(@video.video.file)
     uploader = VideoUploader.new
-    video = File.new(concurso_params[:video].path)
+    video = File.new(video_params[:video].path)
     uploader.store!(video)
     @video.save
     @concurso.videos.create(video_params)
