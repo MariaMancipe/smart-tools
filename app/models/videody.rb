@@ -20,7 +20,7 @@ class Videody
 
   belongs_to :concurso ,:class => Concursody
 
-  after_save :send_to_queue
+  #after_save :send_to_queue
 
   def send_to_queue
     puts 'ID del video'
