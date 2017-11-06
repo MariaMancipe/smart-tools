@@ -29,15 +29,16 @@ class VideosController < ApplicationController
     # @video.save
     # @concurso.videos.create(:nombre => @relacional.nombre ,:duracion => @relacional.duracion ,:nombre_concursante=> @relacional.nombre_concursante, :apellido_concursante => @relacional.apellido_concursante, :correo_concursante => @relacional.correo_concursante, :mensaje_concursante => @relacional.mensaje_concursante, :estado => @relacional.estado, :video => @relacional.video)
     # @video.concurso = @concurso
-
-    @video = Videody.new(video_params)
-    # uploader = VideoUploader.new
-    # uploader.store!(@video.video.file)
     uploader = VideoUploader.new
     video = File.new(video_params[:video].path)
+    s3_path = "https://s3.amazonaws.com/smart-tools-new/uploads/videos/uploads"
+    s3_path_convertido = "https://s3.amazonaws.com/smart-tools-new/uploads/videos/converted"
+    path = s3_path + File.basename(video_params[:video].path)
+    path_convertido =  s3_path_convertido + File.basename(video_params[:video].path)
+    @video = Videody.new(:nombre => concurso_params[:nombre] ,:duracion => concurso_params[:duracion] ,:nombre_concursante=> concurso_params[:nombre_concursante], :apellido_concursante => concurso_params[:apellido_concursante], :correo_concursante => concurso_params[:correo_concursante], :mensaje_concursante => concurso_params[:mensaje_concursante], :estado => concurso_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
     uploader.store!(video)
     @video.save
-    @concurso.videos.create(video_params)
+    @concurso.videos.create(:nombre => concurso_params[:nombre] ,:duracion => concurso_params[:duracion] ,:nombre_concursante=> concurso_params[:nombre_concursante], :apellido_concursante => concurso_params[:apellido_concursante], :correo_concursante => concurso_params[:correo_concursante], :mensaje_concursante => concurso_params[:mensaje_concursante], :estado => concurso_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
 
     json_response(@concurso.videos, :created)
   end
