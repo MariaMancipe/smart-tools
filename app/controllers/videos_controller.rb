@@ -35,10 +35,10 @@ class VideosController < ApplicationController
     s3_path_convertido = "https://s3.amazonaws.com/smart-tools-new/uploads/videos/converted"
     path = s3_path + File.basename(video_params[:video].path)
     path_convertido =  s3_path_convertido + File.basename(video_params[:video].path)
-    @video = Videody.new(:nombre => concurso_params[:nombre] ,:duracion => concurso_params[:duracion] ,:nombre_concursante=> concurso_params[:nombre_concursante], :apellido_concursante => concurso_params[:apellido_concursante], :correo_concursante => concurso_params[:correo_concursante], :mensaje_concursante => concurso_params[:mensaje_concursante], :estado => concurso_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
+    @video = Videody.new(:nombre => video_params[:nombre] ,:duracion => video_params[:duracion] ,:nombre_concursante=> video_params[:nombre_concursante], :apellido_concursante => video_params[:apellido_concursante], :correo_concursante => video_params[:correo_concursante], :mensaje_concursante => video_params[:mensaje_concursante], :estado => video_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
     uploader.store!(video)
     @video.save
-    @concurso.videos.create(:nombre => concurso_params[:nombre] ,:duracion => concurso_params[:duracion] ,:nombre_concursante=> concurso_params[:nombre_concursante], :apellido_concursante => concurso_params[:apellido_concursante], :correo_concursante => concurso_params[:correo_concursante], :mensaje_concursante => concurso_params[:mensaje_concursante], :estado => concurso_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
+    @concurso.videos.create(:nombre => video_params[:nombre] ,:duracion => video_params[:duracion] ,:nombre_concursante=> video_params[:nombre_concursante], :apellido_concursante => video_params[:apellido_concursante], :correo_concursante => video_params[:correo_concursante], :mensaje_concursante => video_params[:mensaje_concursante], :estado => video_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
 
     json_response(@concurso.videos, :created)
   end
