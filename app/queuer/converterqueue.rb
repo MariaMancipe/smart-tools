@@ -1,11 +1,11 @@
 require 'aws-sdk'  # v2: require 'aws-sdk'
+#require 'aws-sdk-rails'
 require 'fileutils'
 require 'streamio-ffmpeg'
 require 'mysql2'
 require 'aws-sdk'
 
 class ConverterQueuer 
-
 		#Crea query para actualizar estado de 0 (por convertir) a 1 (convertido)
 		def self.create_query_converted(idVid, url)
 			return "UPDATE videos SET estado=1, video_convertido=\'#{url}\' WHERE id=\'#{idVid}"
@@ -19,8 +19,8 @@ class ConverterQueuer
 		def self.push_messages_mailer(idvid, mail)
 			sqs = Aws::SQS::Client.new(
 				region: 'us-east-1',
-				access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-				secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+				access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+				secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
 			)
 			message_result = sqs.send_message(
 				queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/MailerQueue', 
@@ -43,14 +43,14 @@ class ConverterQueuer
 		def self.retrieve_message_from_converter
 			sqs = Aws::SQS::Client.new(
 				region: 'us-east-1',
-				access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-				secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+				access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+				secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
 			)
 			receive_message_result = sqs.receive_message({
-			  queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu', 
-			  message_attribute_names: ["All"], # Receive all custom attributes.
-			  max_number_of_messages: 1, # Receive at most one message.
-			  wait_time_seconds: 0 # Do not wait to check for the message.
+				queue_url: 'http://sqs.us-east-1.amazonaws.com/461044559437/ConverterQueu', 
+				message_attribute_names: ["All"], # Receive all custom attributes.
+				max_number_of_messages: 1, # Receive at most one message.
+				wait_time_seconds: 0 # Do not wait to check for the message.
 			})
 			#puts receive_message_result.body
 			# Display information about the message.
@@ -148,6 +148,6 @@ class ConverterQueuer
 			obj.upload_file("#{ENV['VIDEO_CONVERTED']+path}")
 
 		end
-		self.retrieve_message_from_converter
+		#self.retrieve_message_from_converter
 end
 
