@@ -34,7 +34,7 @@ class VideosController < ApplicationController
     s3_path = "https://s3.amazonaws.com/smart-tools-new/uploads/videos/uploads/"
     s3_path_convertido = "https://s3.amazonaws.com/smart-tools-new/uploads/videos/converted/"
     path = s3_path + File.basename(video_params[:video].path)
-    path_convertido =  s3_path_convertido + File.basename(video_params[:video].path)
+    path_convertido =  s3_path_convertido + File.basename(video_params[:video].path, File.extname(video_params[:video].path))+ ".mp4"
     @video = Videody.new(:nombre => video_params[:nombre] ,:duracion => video_params[:duracion] ,:nombre_concursante=> video_params[:nombre_concursante], :apellido_concursante => video_params[:apellido_concursante], :correo_concursante => video_params[:correo_concursante], :mensaje_concursante => video_params[:mensaje_concursante], :estado => video_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
     uploader.store!(video)
     @video.save
