@@ -43,7 +43,7 @@ class ConcursosController < ApplicationController
     @concurso = Concursody.new(:nombre => concurso_params[:nombre], :fecha_inicio =>  concurso_params[:fecha_inicio], :fecha_fin => concurso_params[:fecha_fin], :descripcion => concurso_params[:descripcion], :picture => path)
     uploader.store!(picture)
     @concurso.save
-    @usuario.concursos.create(:nombre => concurso_params[:nombre], :fecha_inicio =>  concurso_params[:fecha_inicio], :fecha_fin => concurso_params[:fecha_fin], :descripcion => concurso_params[:descripcion], :picture => concurso_params[:picture].path)
+    @usuario.concursos.create(:nombre => concurso_params[:nombre], :fecha_inicio =>  concurso_params[:fecha_inicio], :fecha_fin => concurso_params[:fecha_fin], :descripcion => concurso_params[:descripcion], :picture => path)
     json_response(@usuario.concursos, :created)
   end
 
