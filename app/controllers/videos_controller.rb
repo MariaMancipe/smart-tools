@@ -33,6 +33,9 @@ class VideosController < ApplicationController
     @video = Videody.new(video_params)
     # uploader = VideoUploader.new
     # uploader.store!(@video.video.file)
+    uploader = VideoUploader.new
+    video = File.new(video_params[:video].path)
+    uploader.store!(video)
     @video.save
     @concurso.videos.create(video_params)
 
@@ -66,8 +69,7 @@ class VideosController < ApplicationController
   end
 
   def set_concurso
-    @concurso = Concursody.find(params[:concurso_id])
-    #@concurso_relacional= Concurso.find(1)
+    @concurso = Concursody.find(:id => params[:concurso_id])
   end
 
   def search_estado
