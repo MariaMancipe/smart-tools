@@ -70,7 +70,7 @@ class VideosController < ApplicationController
   end
 
   def set_concurso
-    @concurso = Concursody.find(:id => params[:concurso_id])
+    @concurso = Concursody.find(params[:concurso_id])
   end
 
   def search_estado
