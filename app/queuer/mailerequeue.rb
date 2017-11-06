@@ -23,7 +23,7 @@ class MailerQueuer < ApplicationMailer
 			secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 		)
 		receive_message_result = sqs.receive_message({
-		  queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/MailerQueue', 
+		  queue_url: 'https://sqs.us-east-1.amazonaws.com/461044559437/CloudSQS',
 		  message_attribute_names: ["All"], # Receive all custom attributes.
 		  max_number_of_messages: 1, # Receive at most one message.
 		  wait_time_seconds: 0 # Do not wait to check for the message.
