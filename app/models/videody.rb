@@ -7,7 +7,7 @@ class Videody
   field :nombre
   field :duracion
   field :fecha_carga
-  field :estado, :integer, {default: 0}
+  field :estado
   field :nombre_concursante
   field :apellido_concursante
   field :correo_concursante
