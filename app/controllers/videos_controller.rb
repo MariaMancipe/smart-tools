@@ -35,7 +35,7 @@ class VideosController < ApplicationController
     @video.save
     @concurso.videos.create(:nombre => video_params[:nombre] ,:duracion => video_params[:duracion] ,:nombre_concursante=> video_params[:nombre_concursante], :apellido_concursante => video_params[:apellido_concursante], :correo_concursante => video_params[:correo_concursante], :mensaje_concursante => video_params[:mensaje_concursante], :estado => video_params[:estado], :video => path, :video_original => path, :video_convertido => path_convertido)
 
-    #json_response(@video, :created)
+    json_response(@video, :created)
   end
 
   # PUT /videos/:id
