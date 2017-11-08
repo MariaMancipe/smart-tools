@@ -40,9 +40,7 @@ class ConcursosController < ApplicationController
     picture = File.new(concurso_params[:picture].path)
     s3_path = "https://s3.amazonaws.com/smart-tools-new/uploads/pictures/"
     path = s3_path + File.basename(concurso_params[:picture].path)
-    @concurso = Concursody.new(:nombre => concurso_params[:nombre], :fecha_inicio =>  concurso_params[:fecha_inicio], :fecha_fin => concurso_params[:fecha_fin], :descripcion => concurso_params[:descripcion], :picture => path)
     uploader.store!(picture)
-    @concurso.save
     @usuario.concursos.create(:nombre => concurso_params[:nombre], :fecha_inicio =>  concurso_params[:fecha_inicio], :fecha_fin => concurso_params[:fecha_fin], :descripcion => concurso_params[:descripcion], :picture => path)
     json_response(@usuario.concursos, :created)
   end
